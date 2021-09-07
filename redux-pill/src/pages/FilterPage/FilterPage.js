@@ -1,5 +1,6 @@
 import React from "react";
 import "./styles.css";
+import { DatePicker } from "@ui5/webcomponents-react";
 
 function FilterPage() {
   return (
@@ -119,10 +120,7 @@ function FilterPage() {
                     data-date-format="dd-mm-yyyy"
                     data-link-field="dtp_input1"
                   >
-                    <input type="text" className="form-control"></input>
-                    <span className="input-group-addon bg-blue">
-                      <i className="fa fa-th"></i>
-                    </span>
+                    <DatePicker />
                   </div>
                   <input type="hidden" id="dtp_input1" value=""></input>
                   To
@@ -132,10 +130,7 @@ function FilterPage() {
                     data-date-format="dd-mm-yyyy"
                     data-link-field="dtp_input2"
                   >
-                    <input type="text" className="form-control"></input>
-                    <span className="input-group-addon bg-blue">
-                      <i className="fa fa-th"></i>
-                    </span>
+                    <DatePicker />
                   </div>
                   <input type="hidden" id="dtp_input2" value=""></input>
                   <div className="padding"></div>
