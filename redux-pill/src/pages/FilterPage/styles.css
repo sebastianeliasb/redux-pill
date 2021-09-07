@@ -89,3 +89,13 @@ body {
   top: -30px;
   left: 50.1px;
 }
+
+img {
+  width: 100%;
+  height: auto;
+}
+
+.address{
+    white-space: pre-wrap;
+    padding: 0.5em;
+}

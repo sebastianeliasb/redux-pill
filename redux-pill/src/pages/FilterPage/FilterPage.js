@@ -1,6 +1,13 @@
 import React from "react";
 import "./styles.css";
-import { DatePicker } from "@ui5/webcomponents-react";
+import {
+  DatePicker,
+  Table,
+  TableCell,
+  TableRow,
+  TableColumn,
+  Label,
+} from "@ui5/webcomponents-react";
 
 function FilterPage() {
   return (
@@ -226,7 +233,7 @@ function FilterPage() {
                     </div>
                   </div>
 
-                  <div className="table-responsive">
+                  {/* <div className="table-responsive">
                     <table className="table table-hover">
                       <tbody>
                         <tr>
@@ -415,8 +422,84 @@ function FilterPage() {
                         </tr>
                       </tbody>
                     </table>
-                  </div>
-
+                  </div> */}
+                  <Table
+                    columns={
+                      <>
+                        <TableColumn style={{ width: "12rem" }}>
+                          <Label>Image</Label>
+                        </TableColumn>
+                        <TableColumn maxWidth={200} popinText="Address">
+                          <Label>Address</Label>
+                        </TableColumn>
+                        <TableColumn
+                          demandPopin
+                          minWidth={600}
+                          popinText="Price"
+                        >
+                          <Label>Price</Label>
+                        </TableColumn>
+                        <TableColumn
+                          demandPopin
+                          minWidth={600}
+                          popinText="Characteristics"
+                        >
+                          <Label>Characteristics</Label>
+                        </TableColumn>
+                        <TableColumn>
+                          <Label>Characteristics</Label>
+                        </TableColumn>
+                      </>
+                    }
+                    onLoadMore={function noRefCheck() {}}
+                    onPopinChange={function noRefCheck() {}}
+                    onRowClick={function noRefCheck() {}}
+                    onSelectionChange={function noRefCheck() {}}
+                  >
+                    <TableRow>
+                      <TableCell>
+                        <img src="https://images.unsplash.com/photo-1554995207-c18c203602cb?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80"></img>
+                      </TableCell>
+                      <TableCell>
+                        <Label
+                          className="address"
+                          //   children={
+                          //     `10 Avinguda Castellví, <br>
+                          //     Molins de Rei Barcelona Spain`
+                          //   }
+                        >
+                          10 <br></br>Avinguda Castellví <br></br>
+                          Molins de Rei <br></br>Barcelona Spain
+                        </Label>
+                      </TableCell>
+                      <TableCell>
+                        <Label>400000</Label>
+                      </TableCell>
+                      <TableCell>
+                        <Label>4.2KG</Label>
+                      </TableCell>
+                      <TableCell>
+                        <Label>956EUR</Label>
+                      </TableCell>
+                    </TableRow>
+                    <TableRow>
+                      <TableCell>
+                        <Label>Notebook Basic 17HT-1001</Label>
+                      </TableCell>
+                      <TableCell>
+                        <Label>Very Best Screens</Label>
+                      </TableCell>
+                      <TableCell>
+                        <Label>29 x 17 x 3.1cm</Label>
+                      </TableCell>
+                      <TableCell>
+                        <Label>4.5KG</Label>
+                      </TableCell>
+                      <TableCell>
+                        <Label>1249EUR</Label>
+                      </TableCell>
+                    </TableRow>
+                  </Table>
                   <ul className="pagination">
                     <li className="disabled">
                       <a href="#">«</a>
