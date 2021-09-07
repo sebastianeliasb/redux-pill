@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { Button } from "./Button";
+import Button from "../Button";
 import "./Navbar.css";
 
 function Navbar() {
@@ -29,7 +29,7 @@ function Navbar() {
         <div className="navbar-container">
           <Link to="/" className="navbar-logo" onClick={closeMobilMenu}>
             DreamHouse
-            <i class="fab fa-typo3" />
+            <i className="fab fa-typo3" />
           </Link>
         </div>
         <div className="menu-icon" onClick={handleClick}>

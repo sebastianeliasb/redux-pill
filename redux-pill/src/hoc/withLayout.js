@@ -1,8 +1,7 @@
 import React from "react";
 
-import Header from "../components/Header";
-import Footer from "../components/Footer";
-import Main from "../components/Main";
+import Footer from "../Components/Footer/Footer";
+import Main from "../Components/Main";
 
 function getDisplayName(WrappedComponent) {
   return WrappedComponent.displayName || WrappedComponent.name || "Component";
@@ -16,7 +15,6 @@ function withLayout(WrappedComponent) {
   function WrapperComponent({ ...props }) {
     return (
       <div>
-        <Header />
         <Main>
           <WrappedComponent {...props} />
         </Main>
