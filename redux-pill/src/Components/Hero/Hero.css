@@ -33,6 +33,7 @@
   height: 100px;
   width: 350px;
   margin: 6px;
+  letter-spacing: 10px;
 }
 .hero-btns .btn:hover {
   background-color: #f5852a;
