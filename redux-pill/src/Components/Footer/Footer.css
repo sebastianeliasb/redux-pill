@@ -1,9 +1,9 @@
 .footer-container {
   background-color: #fff;
   box-sizing: border-box;
-  padding: 50px;
+  padding: 10px;
   display: flex;
-  height: 10vh;
+  height: 2vh;
   flex-direction: column;
   justify-content: center;
   align-items: center;
