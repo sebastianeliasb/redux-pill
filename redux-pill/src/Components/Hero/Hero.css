@@ -11,9 +11,9 @@
   background-size: cover;
 }
 
-.hero-container > h1 {
+.hero-container > h2 {
   color: #fff;
-  font-size: 80px;
+  font-size: 50px;
   margin-top: -100px;
 }
 
@@ -35,7 +35,7 @@
   margin: 6px;
 }
 .hero-btns .btn:hover {
-  background-color: black;
+  background-color: #f5852a;
 }
 .fa-play-circle {
   margin-left: 4px;
