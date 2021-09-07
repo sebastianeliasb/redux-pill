@@ -29,7 +29,7 @@ function Navbar() {
         <div className="navbar-container">
           <Link to="/" className="navbar-logo" onClick={closeMobilMenu}>
             DreamHouse
-            <i className="fab fa-typo3" />
+            <i className="fas fa-home" />
           </Link>
         </div>
         <div className="menu-icon" onClick={handleClick}>
@@ -56,7 +56,7 @@ function Navbar() {
             </Link>
           </li>
         </ul>
-        {button && <Button buttonStyle="btn--outline">SIGN UP</Button>}
+        {/* {button && <Button buttonStyle="btn--outline">SIGN UP</Button>} */}
       </nav>
     </>
   );
