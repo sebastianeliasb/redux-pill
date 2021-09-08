@@ -6,7 +6,7 @@ function Footer() {
     <div className="footer-container">
       <div className="footer-subscription">
         <p>
-          Website developed by: Marc Sole, Eunyoung Kim & Sebastian Brupbacher
+          Website developed by: Marc Solà, Eunyoung Kim & Sebastian Brupbacher
         </p>
       </div>
     </div>
