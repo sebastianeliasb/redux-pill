@@ -115,7 +115,7 @@ function FilterPage() {
 
                     <div className="filter-box">
                       <div className="col-sm-6">
-                        <Select>
+                        <Select className="filterBy">
                           <h6>Order by:</h6>
                           <option>Name</option>
                           <option>Date</option>
