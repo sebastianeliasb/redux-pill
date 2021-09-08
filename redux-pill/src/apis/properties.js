@@ -8,7 +8,7 @@ export const makeApi = () => {
 };
 
 export const getProperties = (api = makeApi()) => {
-  return api.get(`/`);
+  return api.get(``);
 };
 
 export const getProperty = (propertyId, api = makeApi()) => {
