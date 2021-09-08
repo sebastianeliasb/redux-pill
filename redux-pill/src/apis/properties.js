@@ -15,6 +15,9 @@ export const getProperty = (propertyId, api = makeApi()) => {
   return api.get(`/${propertyId}`);
 };
 
+export const getSearchedProperties = (searchedProperties, api = makeApi()) => {
+  return api.get(`/?q=${searchedProperties}`);
+};
 // export const getUrl = (url, api = makeApi()) => {
 //   return api.get(url);
 // };

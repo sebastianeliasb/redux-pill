@@ -16,7 +16,8 @@ import {
   Badge,
 } from "@ui5/webcomponents-react";
 
-function FilterPage() {
+function FilterPage(searched) {
+  console.log(searched.location.query.searched, "filter");
   return (
     //Filter Side
     <div className="container mt-3">
