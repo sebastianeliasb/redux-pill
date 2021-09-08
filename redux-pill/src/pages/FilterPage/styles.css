@@ -77,3 +77,24 @@ body {
   display: inline;
   font-weight: 600;
 }
+
+img {
+  width: 100%;
+  height: auto;
+}
+
+.address {
+  /* white-space: pre-wrap; */
+  padding: 0.5rem;
+}
+.tableContainer {
+  width: 100%;
+}
+.tableCell {
+  padding: 0.5rem;
+  display: flex;
+  flex-direction: column;
+}
+.list-group-item {
+  border: none;
+}
