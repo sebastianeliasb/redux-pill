@@ -1,5 +1,6 @@
 import React from "react";
 import "./styles.css";
+import withLayout from "../../hoc/withLayout";
 import {
   DatePicker,
   Table,
@@ -272,4 +273,4 @@ function FilterPage() {
   );
 }
 
-export default FilterPage;
+export default withLayout(FilterPage);
