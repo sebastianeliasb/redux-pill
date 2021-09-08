@@ -96,7 +96,7 @@ function FilterPage() {
                   {/* Result Side  */}
                   <div className="col-md-9">
                     <h3>
-                      <i class="fas fa-poll-h"></i> Results
+                      <i className="fas fa-poll-h"></i> Results
                     </h3>
                     <hr></hr>
                     <div className="input-group">
@@ -105,11 +105,11 @@ function FilterPage() {
                         className="search-bar"
                         placeholder="Search here..."
                       />
-                      <span className="input-group-btn">
+                      {/* <span className="input-group-btn">
                         <button className="btn-search" type="button">
                           Search
                         </button>
-                      </span>
+                      </span> */}
                     </div>
 
                     {/* <p>Showing all results matching {searchResultHere}</p> */}
