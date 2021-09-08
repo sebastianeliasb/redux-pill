@@ -1,14 +1,18 @@
-import React from "react";
+import React, { useEffect } from "react";
 import withLayout from "../../hoc/withLayout";
 import Hero from "../../Components/Hero";
 import { useSelector, useDispatch } from "react-redux";
 import { getAllProperties } from "../../redux/search/action";
-import { data } from "../../db/database";
 
 function Home() {
-  const search = useSelector((state) => state.search);
+  const search = useSelector((state) => state.search.properties.data);
 
-  console.log(data.properties);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getAllProperties());
+  }, []);
+  console.log(search);
   return (
     <>
       <Hero />

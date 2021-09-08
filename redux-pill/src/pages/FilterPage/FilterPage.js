@@ -96,7 +96,7 @@ function FilterPage() {
                   {/* Result Side  */}
                   <div className="col-md-9">
                     <h3>
-                      <i class="fas fa-poll-h"></i> Results
+                      <i className="fas fa-poll-h"></i> Results
                     </h3>
                     <hr></hr>
                     <div className="input-group">
