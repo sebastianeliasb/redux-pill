@@ -34,8 +34,8 @@ function Navbar() {
         </div>
         <div>
           <Input
+            className="search-bar-navbar"
             icon={<Icon name="search" />}
-            className="search-bar"
             placeholder="Search by city..."
           />
         </div>

@@ -103,13 +103,13 @@ function FilterPage() {
                       <Input
                         icon={<Icon name="search" />}
                         className="search-bar"
-                        placeholder="Search here..."
+                        placeholder="Search by city..."
                       />
-                      <span className="input-group-btn">
+                      {/* <span className="input-group-btn">
                         <button className="btn-search" type="button">
                           Search
                         </button>
-                      </span>
+                      </span> */}
                     </div>
 
                     {/* <p>Showing all results matching {searchResultHere}</p> */}
