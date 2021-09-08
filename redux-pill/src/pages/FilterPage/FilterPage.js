@@ -1,5 +1,6 @@
 import React from "react";
 import "./styles.css";
+import withLayout from "../../hoc/withLayout";
 import {
   DatePicker,
   Table,
@@ -52,7 +53,7 @@ function FilterPage() {
                     <h6>Bedrooms:</h6>
                     <Select>
                       <option>1</option>
-                      <option>3</option>
+                      <option>2</option>
                       <option>3</option>
                       <option>4 or +</option>
                     </Select>
@@ -61,7 +62,7 @@ function FilterPage() {
                     <h6>Bathrooms:</h6>
                     <Select>
                       <option>1</option>
-                      <option>3</option>
+                      <option>2</option>
                       <option>3 or +</option>
                     </Select>
                   </div>
@@ -95,7 +96,7 @@ function FilterPage() {
                   {/* Result Side  */}
                   <div className="col-md-9">
                     <h3>
-                      <i className="fa fa-file-o"></i> Results
+                      <i class="fas fa-poll-h"></i> Results
                     </h3>
                     <hr></hr>
                     <div className="input-group">
@@ -272,4 +273,4 @@ function FilterPage() {
   );
 }
 
-export default FilterPage;
+export default withLayout(FilterPage);

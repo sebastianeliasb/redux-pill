@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import FilterPage from "./pages/FilterPage";
 import { ThemeProvider } from "@ui5/webcomponents-react";
+import Footer from "./Components/Footer";
 
 function App() {
   return (
