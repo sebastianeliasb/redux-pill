@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import Button from "../Button";
+import { Input, Icon } from "@ui5/webcomponents-react";
 import "./Navbar.css";
 
 function Navbar() {
@@ -31,6 +31,13 @@ function Navbar() {
             DreamHouse
             <i className="fas fa-home" />
           </Link>
+        </div>
+        <div>
+          <Input
+            icon={<Icon name="search" />}
+            className="search-bar"
+            placeholder="Search by city..."
+          />
         </div>
         <div className="menu-icon" onClick={handleClick}>
           <i className={click ? "fas fa-times" : "fas fa-bars"} />
