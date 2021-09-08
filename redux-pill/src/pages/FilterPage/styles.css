@@ -89,6 +89,7 @@ img {
 }
 .tableContainer {
   width: 100%;
+  cursor: pointer;
 }
 .tableCell {
   padding: 0.5rem;

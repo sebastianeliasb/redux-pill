@@ -113,173 +113,155 @@ function FilterPage() {
 
                     {/* <p>Showing all results matching {searchResultHere}</p> */}
 
-                    <div className="padding"></div>
-
-                    <div className="row">
+                    <div className="filter-box">
                       <div className="col-sm-6">
-                        <div className="btn-group">
-                          <button
-                            type="button"
-                            className="btn btn-default dropdown-toggle"
-                            data-toggle="dropdown"
-                          >
-                            Order by <span className="caret"></span>
-                          </button>
-                          <ul className="dropdown-menu" role="menu">
-                            <li>
-                              <a href="#">Name</a>
-                            </li>
-                            <li>
-                              <a href="#">Date</a>
-                            </li>
-                            <li>
-                              <a href="#">View</a>
-                            </li>
-                            <li>
-                              <a href="#">Rating</a>
-                            </li>
-                          </ul>
-                        </div>
-                      </div>
-
-                      <div className="col-md-6 text-right">
-                        <div className="btn-group">
-                          <button
-                            type="button"
-                            className="btn btn-default active"
-                          >
-                            <i className="fa fa-list"></i>
-                          </button>
-                          <button type="button" className="btn btn-default">
-                            <i className="fa fa-th"></i>
-                          </button>
-                        </div>
+                        <Select>
+                          <h6>Order by:</h6>
+                          <option>Name</option>
+                          <option>Date</option>
+                          <option>View</option>
+                          <option>Rating</option>
+                        </Select>
                       </div>
                     </div>
-                    <Table
-                      className="tableContainer"
-                      columns={
-                        <>
-                          <TableColumn style={{ width: "12rem" }}>
-                            <Label>Image</Label>
-                          </TableColumn>
-                          <TableColumn
-                            minWidth={200}
-                            style={{ width: "12rem" }}
-                            popinText="Address"
-                          >
-                            <Label>Address</Label>
-                          </TableColumn>
-                          <TableColumn
-                            demandPopin
-                            style={{ width: "8rem" }}
-                            popinText="Price"
-                          >
-                            <Label>Price</Label>
-                          </TableColumn>
-                          <TableColumn
-                            demandPopin
-                            minWidth={600}
-                            style={{ width: "12rem" }}
-                            popinText="Special Features"
-                          >
-                            <Label>Special Features</Label>
-                          </TableColumn>
-                          <TableColumn
-                            minWidth={600}
-                            style={{ width: "12rem" }}
-                            popinText="Characteristics"
-                          >
-                            <Label>Characteristics</Label>
-                          </TableColumn>
-                        </>
-                      }
-                      onLoadMore={function noRefCheck() {}}
-                      onPopinChange={function noRefCheck() {}}
-                      onRowClick={function noRefCheck() {}}
-                      onSelectionChange={function noRefCheck() {}}
-                    >
-                      <TableRow>
-                        <TableCell>
-                          <img src="https://images.unsplash.com/photo-1554995207-c18c203602cb?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80"></img>
-                        </TableCell>
-                        <TableCell>
-                          <Label className="address">
-                            10 <br></br>Avinguda Castellví <br></br>
-                            Molins de Rei <br></br>Barcelona Spain
-                          </Label>
-                        </TableCell>
-                        <TableCell>
-                          <Label>400000$</Label>
-                        </TableCell>
-                        <TableCell className="tableCell">
-                          <Badge className="mb-1 mt-1" colorScheme={2}>
-                            Pets allowed
-                          </Badge>
-                          <Badge className="mb-1" colorScheme={8}>
-                            Lift
-                          </Badge>
-                          <Badge className="mb-1" colorScheme={2}>
-                            Garden
-                          </Badge>
-                          <Badge className="mb-1" colorScheme={8}>
-                            Air Conditioning
-                          </Badge>
-                          <Badge className="mb-1" colorScheme={2}>
-                            Swimming pool
-                          </Badge>
-                          <Badge className="mb-1" colorScheme={8}>
-                            Terrace
-                          </Badge>
-                        </TableCell>
-                        <TableCell>
-                          <ul className="list-group">
-                            <li className="list-group-item d-flex justify-content-between align-items-center">
-                              Room
-                              <span className="badge bg-secondary rounded-pill">
-                                2
-                              </span>
-                            </li>
-                            <li className="list-group-item d-flex justify-content-between align-items-center">
-                              Bath
-                              <span className="badge bg-secondary rounded-pill">
-                                1
-                              </span>
-                            </li>
-                            <li className="list-group-item d-flex justify-content-between align-items-center">
-                              Size
-                              <span className="badge bg-secondary rounded-pill">
-                                67
-                              </span>
-                            </li>
-                          </ul>
-                        </TableCell>
-                      </TableRow>
-                    </Table>
-                    <ul className="pagination">
-                      <li className="disabled">
-                        <a href="#">«</a>
-                      </li>
-                      <li className="active">
-                        <a href="#">1</a>
-                      </li>
-                      <li>
-                        <a href="#">2</a>
-                      </li>
-                      <li>
-                        <a href="#">3</a>
-                      </li>
-                      <li>
-                        <a href="#">4</a>
-                      </li>
-                      <li>
-                        <a href="#">5</a>
-                      </li>
-                      <li>
-                        <a href="#">»</a>
-                      </li>
-                    </ul>
+
+                    <div className="col-md-6 text-right">
+                      <div className="btn-group">
+                        <button
+                          type="button"
+                          className="btn btn-default active"
+                        >
+                          <i className="fa fa-list"></i>
+                        </button>
+                        <button type="button" className="btn btn-default">
+                          <i className="fa fa-th"></i>
+                        </button>
+                      </div>
+                    </div>
                   </div>
+                  <Table
+                    className="tableContainer"
+                    columns={
+                      <>
+                        <TableColumn style={{ width: "12rem" }}>
+                          <Label>Image</Label>
+                        </TableColumn>
+                        <TableColumn
+                          minWidth={200}
+                          style={{ width: "12rem" }}
+                          popinText="Address"
+                        >
+                          <Label>Address</Label>
+                        </TableColumn>
+                        <TableColumn
+                          demandPopin
+                          style={{ width: "8rem" }}
+                          popinText="Price"
+                        >
+                          <Label>Price</Label>
+                        </TableColumn>
+                        <TableColumn
+                          demandPopin
+                          minWidth={600}
+                          style={{ width: "12rem" }}
+                          popinText="Special Features"
+                        >
+                          <Label>Special Features</Label>
+                        </TableColumn>
+                        <TableColumn
+                          minWidth={600}
+                          style={{ width: "12rem" }}
+                          popinText="Characteristics"
+                        >
+                          <Label>Characteristics</Label>
+                        </TableColumn>
+                      </>
+                    }
+                    onLoadMore={function noRefCheck() {}}
+                    onPopinChange={function noRefCheck() {}}
+                    onRowClick={function noRefCheck() {}}
+                    onSelectionChange={function noRefCheck() {}}
+                  >
+                    <TableRow>
+                      <TableCell>
+                        <img src="https://images.unsplash.com/photo-1554995207-c18c203602cb?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80"></img>
+                      </TableCell>
+                      <TableCell>
+                        <Label className="address">
+                          10 <br></br>Avinguda Castellví <br></br>
+                          Molins de Rei <br></br>Barcelona Spain
+                        </Label>
+                      </TableCell>
+                      <TableCell>
+                        <Label>400000$</Label>
+                      </TableCell>
+                      <TableCell className="tableCell">
+                        <Badge className="mb-1 mt-1" colorScheme={2}>
+                          Pets allowed
+                        </Badge>
+                        <Badge className="mb-1" colorScheme={8}>
+                          Lift
+                        </Badge>
+                        <Badge className="mb-1" colorScheme={2}>
+                          Garden
+                        </Badge>
+                        <Badge className="mb-1" colorScheme={8}>
+                          Air Conditioning
+                        </Badge>
+                        <Badge className="mb-1" colorScheme={2}>
+                          Swimming pool
+                        </Badge>
+                        <Badge className="mb-1" colorScheme={8}>
+                          Terrace
+                        </Badge>
+                      </TableCell>
+                      <TableCell>
+                        <ul className="list-group">
+                          <li className="list-group-item d-flex justify-content-between align-items-center">
+                            Room
+                            <span className="badge bg-secondary rounded-pill">
+                              2
+                            </span>
+                          </li>
+                          <li className="list-group-item d-flex justify-content-between align-items-center">
+                            Bath
+                            <span className="badge bg-secondary rounded-pill">
+                              1
+                            </span>
+                          </li>
+                          <li className="list-group-item d-flex justify-content-between align-items-center">
+                            Size
+                            <span className="badge bg-secondary rounded-pill">
+                              67
+                            </span>
+                          </li>
+                        </ul>
+                      </TableCell>
+                    </TableRow>
+                  </Table>
+                  <ul className="pagination">
+                    <li className="disabled">
+                      <a href="#">«</a>
+                    </li>
+                    <li className="active">
+                      <a href="#">1</a>
+                    </li>
+                    <li>
+                      <a href="#">2</a>
+                    </li>
+                    <li>
+                      <a href="#">3</a>
+                    </li>
+                    <li>
+                      <a href="#">4</a>
+                    </li>
+                    <li>
+                      <a href="#">5</a>
+                    </li>
+                    <li>
+                      <a href="#">»</a>
+                    </li>
+                  </ul>
                 </div>
               </div>
             </div>
