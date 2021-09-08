@@ -36,6 +36,8 @@
 
 .nav-menu {
   display: grid;
+  box-sizing: border-box;
+  padding: 5px;
   grid-template-columns: repeat(4, auto);
   grid-gap: 10px;
   list-style: none;
