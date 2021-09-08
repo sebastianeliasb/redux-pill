@@ -8,11 +8,11 @@ body {
   width: 30%;
 }
 .filter-box {
-  margin: 1rem;
+  margin: 0.3rem;
 }
 .search-bar {
   width: 50%;
-  margin: 1rem;
+  margin: 0.3rem;
 }
 
 .btn-search {
