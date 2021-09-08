@@ -84,13 +84,14 @@ img {
 }
 
 .address {
-  /* white-space: pre-wrap; */
   padding: 0.5rem;
 }
 .tableContainer {
   width: 100%;
+  cursor: pointer;
 }
 .tableCell {
+  margin-top: 1.6rem;
   padding: 0.5rem;
   display: flex;
   flex-direction: column;

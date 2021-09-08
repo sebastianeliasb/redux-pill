@@ -3,7 +3,7 @@
   box-sizing: border-box;
   padding: 10px;
   display: flex;
-  height: 2vh;
+  height: 5vh;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -16,10 +16,11 @@
   align-items: center;
   text-align: center;
   padding: 24px;
-  color: #fff;
+  color: black;
 }
 
 .footer-subscription > p {
+  margin-top: 1em;
   font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
     "Lucida Sans", Arial, sans-serif;
 }
