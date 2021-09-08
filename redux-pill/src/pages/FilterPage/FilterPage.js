@@ -61,7 +61,7 @@ function FilterPage() {
                     <h6>Bathrooms:</h6>
                     <Select>
                       <option>1</option>
-                      <option>3</option>
+                      <option>2</option>
                       <option>3 or +</option>
                     </Select>
                   </div>
