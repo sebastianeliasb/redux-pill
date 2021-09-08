@@ -2,11 +2,17 @@ import React from "react";
 import "./styles.css";
 import {
   DatePicker,
+  Table,
+  TableCell,
+  TableRow,
+  TableColumn,
+  Label,
   Select,
   CheckBox,
   RangeSlider,
   Input,
   Icon,
+  Badge,
 } from "@ui5/webcomponents-react";
 
 function FilterPage() {
@@ -151,197 +157,334 @@ function FilterPage() {
                       </div>
                     </div>
 
-                    <div className="table-responsive">
-                      <table className="table table-hover">
-                        <tbody>
-                          <tr>
-                            <td className="number text-center">1</td>
-                            <td className="image">
-                              <img
-                                src="https://via.placeholder.com/400x300/FF8C00"
-                                alt=""
-                              ></img>
-                            </td>
-                            <td className="product">
-                              <strong>Product 1</strong>
-                              <br></br>This is the product description.
-                            </td>
-                            <td className="rate text-right">
-                              <span>
-                                <i className="fa fa-star"></i>
-                                <i className="fa fa-star"></i>
-                                <i className="fa fa-star"></i>
-                                <i className="fa fa-star"></i>
-                                <i className="fa fa-star-half-o"></i>
+                    {/* <div className="table-responsive">
+                    <table className="table table-hover">
+                      <tbody>
+                        <tr>
+                          <td className="number text-center">1</td>
+                          <td className="image">
+                            <img
+                              src="https://via.placeholder.com/400x300/FF8C00"
+                              alt=""
+                            ></img>
+                          </td>
+                          <td className="product">
+                            <strong>Product 1</strong>
+                            <br></br>This is the product description.
+                          </td>
+                          <td className="rate text-right">
+                            <span>
+                              <i className="fa fa-star"></i>
+                              <i className="fa fa-star"></i>
+                              <i className="fa fa-star"></i>
+                              <i className="fa fa-star"></i>
+                              <i className="fa fa-star-half-o"></i>
+                            </span>
+                          </td>
+                          <td className="price text-right">$350</td>
+                        </tr>
+                        <tr>
+                          <td className="number text-center">2</td>
+                          <td className="image">
+                            <img
+                              src="https://via.placeholder.com/400x300/5F9EA0"
+                              alt=""
+                            ></img>
+                          </td>
+                          <td className="product">
+                            <strong>Product 2</strong>
+                            <br></br>This is the product description.
+                          </td>
+                          <td className="rate text-right">
+                            <span>
+                              <i className="fa fa-star"></i>
+                              <i className="fa fa-star"></i>
+                              <i className="fa fa-star"></i>
+                              <i className="fa fa-star-o"></i>
+                              <i className="fa fa-star-o"></i>
+                            </span>
+                          </td>
+                          <td className="price text-right">$1,050</td>
+                        </tr>
+                        <tr>
+                          <td className="number text-center">3</td>
+                          <td className="image">
+                            <img
+                              src="https://via.placeholder.com/400x300"
+                              alt=""
+                            ></img>
+                          </td>
+                          <td className="product">
+                            <strong>Product 3</strong>
+                            <br></br>This is the product description.
+                          </td>
+                          <td className="rate text-right">
+                            <span>
+                              <i className="fa fa-star"></i>
+                              <i className="fa fa-star"></i>
+                              <i className="fa fa-star"></i>
+                              <i className="fa fa-star-half-o"></i>
+                              <i className="fa fa-star-o"></i>
+                            </span>
+                          </td>
+                          <td className="price text-right">$550</td>
+                        </tr>
+                        <tr>
+                          <td className="number text-center">4</td>
+                          <td className="image">
+                            <img
+                              src="https://via.placeholder.com/400x300/8A2BE2"
+                              alt=""
+                            ></img>
+                          </td>
+                          <td className="product">
+                            <strong>Product 4</strong>
+                            <br></br>This is the product description.
+                          </td>
+                          <td className="rate text-right">
+                            <span>
+                              <i className="fa fa-star"></i>
+                              <i className="fa fa-star"></i>
+                              <i className="fa fa-star"></i>
+                              <i className="fa fa-star"></i>
+                              <i className="fa fa-star-o"></i>
+                            </span>
+                          </td>
+                          <td className="price text-right">$330</td>
+                        </tr>
+                        <tr>
+                          <td className="number text-center">5</td>
+                          <td className="image">
+                            <img
+                              src="https://via.placeholder.com/400x300"
+                              alt=""
+                            ></img>
+                          </td>
+                          <td className="product">
+                            <strong>Product 5</strong>
+                            <br></br>This is the product description.
+                          </td>
+                          <td className="rate text-right">
+                            <span>
+                              <i className="fa fa-star"></i>
+                              <i className="fa fa-star"></i>
+                              <i className="fa fa-star"></i>
+                              <i className="fa fa-star"></i>
+                              <i className="fa fa-star"></i>
+                            </span>
+                          </td>
+                          <td className="price text-right">$540</td>
+                        </tr>
+                        <tr>
+                          <td className="number text-center">6</td>
+                          <td className="image">
+                            <img
+                              src="https://via.placeholder.com/400x300/6495ED"
+                              alt=""
+                            ></img>
+                          </td>
+                          <td className="product">
+                            <strong>Product 6</strong>
+                            <br></br>This is the product description.
+                          </td>
+                          <td className="rate text-right">
+                            <span>
+                              <i className="fa fa-star"></i>
+                              <i className="fa fa-star"></i>
+                              <i className="fa fa-star"></i>
+                              <i className="fa fa-star"></i>
+                              <i className="fa fa-star-half-o"></i>
+                            </span>
+                          </td>
+                          <td className="price text-right">$870</td>
+                        </tr>
+                        <tr>
+                          <td className="number text-center">7</td>
+                          <td className="image">
+                            <img
+                              src="https://via.placeholder.com/400x300/DC143C"
+                              alt=""
+                            ></img>
+                          </td>
+                          <td className="product">
+                            <strong>Product 7</strong>
+                            <br></br>This is the product description.
+                          </td>
+                          <td className="rate text-right">
+                            <span>
+                              <i className="fa fa-star"></i>
+                              <i className="fa fa-star"></i>
+                              <i className="fa fa-star-o"></i>
+                              <i className="fa fa-star-o"></i>
+                              <i className="fa fa-star-o"></i>
+                            </span>
+                          </td>
+                          <td className="price text-right">$620</td>
+                        </tr>
+                        <tr>
+                          <td className="number text-center">8</td>
+                          <td className="image">
+                            <img
+                              src="https://via.placeholder.com/400x300/9932CC"
+                              alt=""
+                            ></img>
+                          </td>
+                          <td className="product">
+                            <strong>Product 8</strong>
+                            <br></br>This is the product description.
+                          </td>
+                          <td className="rate text-right">
+                            <span>
+                              <i className="fa fa-star"></i>
+                              <i className="fa fa-star"></i>
+                              <i className="fa fa-star"></i>
+                              <i className="fa fa-star"></i>
+                              <i className="fa fa-star-half-o"></i>
+                            </span>
+                          </td>
+                          <td className="price text-right">$1,550</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div> */}
+                    <Table
+                      className="tableContainer"
+                      columns={
+                        <>
+                          <TableColumn style={{ width: "12rem" }}>
+                            <Label>Image</Label>
+                          </TableColumn>
+                          <TableColumn
+                            minWidth={200}
+                            style={{ width: "12rem" }}
+                            popinText="Address"
+                          >
+                            <Label>Address</Label>
+                          </TableColumn>
+                          <TableColumn
+                            demandPopin
+                            // minWidth={600}
+                            style={{ width: "8rem" }}
+                            popinText="Price"
+                          >
+                            <Label>Price</Label>
+                          </TableColumn>
+                          <TableColumn
+                            demandPopin
+                            minWidth={600}
+                            style={{ width: "12rem" }}
+                            popinText="Special Features"
+                          >
+                            <Label>Special Features</Label>
+                          </TableColumn>
+                          <TableColumn
+                            minWidth={600}
+                            style={{ width: "12rem" }}
+                            popinText="Characteristics"
+                          >
+                            <Label>Characteristics</Label>
+                          </TableColumn>
+                        </>
+                      }
+                      onLoadMore={function noRefCheck() {}}
+                      onPopinChange={function noRefCheck() {}}
+                      onRowClick={function noRefCheck() {}}
+                      onSelectionChange={function noRefCheck() {}}
+                    >
+                      <TableRow>
+                        <TableCell>
+                          <img src="https://images.unsplash.com/photo-1554995207-c18c203602cb?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80"></img>
+                        </TableCell>
+                        <TableCell>
+                          <Label
+                            className="address"
+                          >
+                            10 <br></br>Avinguda Castellví <br></br>
+                            Molins de Rei <br></br>Barcelona Spain
+                          </Label>
+                        </TableCell>
+                        <TableCell>
+                          <Label>400000$</Label>
+                        </TableCell>
+                        <TableCell className="tableCell">
+                          <Badge className="mb-1 mt-1" colorScheme={2}>
+                            Pets allowed
+                          </Badge>
+                          <Badge className="mb-1" colorScheme={8}>
+                            Lift
+                          </Badge>
+                          <Badge className="mb-1" colorScheme={2}>
+                            Garden
+                          </Badge>
+                          <Badge className="mb-1" colorScheme={8}>
+                            Air Conditioning
+                          </Badge>
+                          <Badge className="mb-1" colorScheme={2}>
+                            Swimming pool
+                          </Badge>
+                          <Badge className="mb-1" colorScheme={8}>
+                            Terrace
+                          </Badge>
+                          {/* <ul class="list-group">
+                            <li
+                              class="list-group-item disabled"
+                              aria-disabled="true"
+                            >
+                              <Badge className="mb-1 mt-1" colorScheme={2}>
+                                Pets allowed
+                              </Badge>
+                            </li>
+                            <li class="list-group-item">
+                              <Badge className="mb-1" colorScheme={8}>
+                                Lift
+                              </Badge>
+                            </li>
+                            <li class="list-group-item">
+                              <Badge className="mb-1" colorScheme={2}>
+                                Garden
+                              </Badge>
+                            </li>
+                            <li class="list-group-item">
+                              <Badge className="mb-1" colorScheme={8}>
+                                Air Conditioning
+                              </Badge>
+                            </li>
+                            <li class="list-group-item">
+                              <Badge className="badge" colorScheme={2}>
+                                Swimming pool
+                              </Badge>
+                            </li>
+                            <li class="list-group-item">
+                              <Badge className="mb-1" colorScheme={8}>
+                                Terrace
+                              </Badge>
+                            </li>
+                          </ul> */}
+                        </TableCell>
+                        <TableCell>
+                          <ul className="list-group">
+                            <li className="list-group-item d-flex justify-content-between align-items-center">
+                              Room
+                              <span className="badge bg-secondary rounded-pill">
+                                2
                               </span>
-                            </td>
-                            <td className="price text-right">$350</td>
-                          </tr>
-                          <tr>
-                            <td className="number text-center">3</td>
-                            <td className="image">
-                              <img
-                                src="https://via.placeholder.com/400x300/5F9EA0"
-                                alt=""
-                              ></img>
-                            </td>
-                            <td className="product">
-                              <strong>Product 3</strong>
-                              <br></br>This is the product description.
-                            </td>
-                            <td className="rate text-right">
-                              <span>
-                                <i className="fa fa-star"></i>
-                                <i className="fa fa-star"></i>
-                                <i className="fa fa-star"></i>
-                                <i className="fa fa-star-o"></i>
-                                <i className="fa fa-star-o"></i>
+                            </li>
+                            <li className="list-group-item d-flex justify-content-between align-items-center">
+                              Bath
+                              <span className="badge bg-secondary rounded-pill">
+                                1
                               </span>
-                            </td>
-                            <td className="price text-right">$1,050</td>
-                          </tr>
-                          <tr>
-                            <td className="number text-center">3</td>
-                            <td className="image">
-                              <img
-                                src="https://via.placeholder.com/400x300"
-                                alt=""
-                              ></img>
-                            </td>
-                            <td className="product">
-                              <strong>Product 3</strong>
-                              <br></br>This is the product description.
-                            </td>
-                            <td className="rate text-right">
-                              <span>
-                                <i className="fa fa-star"></i>
-                                <i className="fa fa-star"></i>
-                                <i className="fa fa-star"></i>
-                                <i className="fa fa-star-half-o"></i>
-                                <i className="fa fa-star-o"></i>
+                            </li>
+                            <li className="list-group-item d-flex justify-content-between align-items-center">
+                              Size
+                              <span className="badge bg-secondary rounded-pill">
+                                67
                               </span>
-                            </td>
-                            <td className="price text-right">$550</td>
-                          </tr>
-                          <tr>
-                            <td className="number text-center">4</td>
-                            <td className="image">
-                              <img
-                                src="https://via.placeholder.com/400x300/8A3BE3"
-                                alt=""
-                              ></img>
-                            </td>
-                            <td className="product">
-                              <strong>Product 4</strong>
-                              <br></br>This is the product description.
-                            </td>
-                            <td className="rate text-right">
-                              <span>
-                                <i className="fa fa-star"></i>
-                                <i className="fa fa-star"></i>
-                                <i className="fa fa-star"></i>
-                                <i className="fa fa-star"></i>
-                                <i className="fa fa-star-o"></i>
-                              </span>
-                            </td>
-                            <td className="price text-right">$330</td>
-                          </tr>
-                          <tr>
-                            <td className="number text-center">5</td>
-                            <td className="image">
-                              <img
-                                src="https://via.placeholder.com/400x300"
-                                alt=""
-                              ></img>
-                            </td>
-                            <td className="product">
-                              <strong>Product 5</strong>
-                              <br></br>This is the product description.
-                            </td>
-                            <td className="rate text-right">
-                              <span>
-                                <i className="fa fa-star"></i>
-                                <i className="fa fa-star"></i>
-                                <i className="fa fa-star"></i>
-                                <i className="fa fa-star"></i>
-                                <i className="fa fa-star"></i>
-                              </span>
-                            </td>
-                            <td className="price text-right">$540</td>
-                          </tr>
-                          <tr>
-                            <td className="number text-center">6</td>
-                            <td className="image">
-                              <img
-                                src="https://via.placeholder.com/400x300/6495ED"
-                                alt=""
-                              ></img>
-                            </td>
-                            <td className="product">
-                              <strong>Product 6</strong>
-                              <br></br>This is the product description.
-                            </td>
-                            <td className="rate text-right">
-                              <span>
-                                <i className="fa fa-star"></i>
-                                <i className="fa fa-star"></i>
-                                <i className="fa fa-star"></i>
-                                <i className="fa fa-star"></i>
-                                <i className="fa fa-star-half-o"></i>
-                              </span>
-                            </td>
-                            <td className="price text-right">$870</td>
-                          </tr>
-                          <tr>
-                            <td className="number text-center">7</td>
-                            <td className="image">
-                              <img
-                                src="https://via.placeholder.com/400x300/DC143C"
-                                alt=""
-                              ></img>
-                            </td>
-                            <td className="product">
-                              <strong>Product 7</strong>
-                              <br></br>This is the product description.
-                            </td>
-                            <td className="rate text-right">
-                              <span>
-                                <i className="fa fa-star"></i>
-                                <i className="fa fa-star"></i>
-                                <i className="fa fa-star-o"></i>
-                                <i className="fa fa-star-o"></i>
-                                <i className="fa fa-star-o"></i>
-                              </span>
-                            </td>
-                            <td className="price text-right">$630</td>
-                          </tr>
-                          <tr>
-                            <td className="number text-center">8</td>
-                            <td className="image">
-                              <img
-                                src="https://via.placeholder.com/400x300/9933CC"
-                                alt=""
-                              ></img>
-                            </td>
-                            <td className="product">
-                              <strong>Product 8</strong>
-                              <br></br>This is the product description.
-                            </td>
-                            <td className="rate text-right">
-                              <span>
-                                <i className="fa fa-star"></i>
-                                <i className="fa fa-star"></i>
-                                <i className="fa fa-star"></i>
-                                <i className="fa fa-star"></i>
-                                <i className="fa fa-star-half-o"></i>
-                              </span>
-                            </td>
-                            <td className="price text-right">$1,550</td>
-                          </tr>
-                        </tbody>
-                      </table>
-                    </div>
-
+                            </li>
+                          </ul>
+                        </TableCell>
+                      </TableRow>
+                    </Table>
                     <ul className="pagination">
                       <li className="disabled">
                         <a href="#">«</a>
@@ -350,7 +493,7 @@ function FilterPage() {
                         <a href="#">1</a>
                       </li>
                       <li>
-                        <a href="#">3</a>
+                        <a href="#">2</a>
                       </li>
                       <li>
                         <a href="#">3</a>
