@@ -1,32 +1,31 @@
 import React from "react";
 import { TableCell, TableRow, Label, Badge } from "@ui5/webcomponents-react";
 
-function TableEntry(
-  {
-    // img,
-    // streetNumber,
-    // street,
-    // city,
-    // province,
-    // country,
-    // price,
-    // pet,
-    // lift,
-    // garden,
-    // air_conditioning,
-    // swimming_pool,
-    // terrace,
-    // room,
-    // bath,
-    // size,
-  }
-) {
+function TableEntry(item) {
+  // img,
+  // streetNumber,
+  // street,
+  // city,
+  // province,
+  // country,
+  // price,
+  // pet,
+  // lift,
+  // garden,
+  // air_conditioning,
+  // swimming_pool,
+  // terrace,
+  // room,
+  // bath,
+  // size,
+
+  console.log(item);
   return (
     <>
       <TableRow>
         <TableCell>
-          <img src="https://images.unsplash.com/photo-1554995207-c18c203602cb?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80"></img>
-          {/* <img src={img}></img> */}
+          {/* <img src="https://images.unsplash.com/photo-1554995207-c18c203602cb?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80"></img> */}
+          <img src={item.imageURL}></img>
         </TableCell>
         <TableCell>
           <Label className="address">

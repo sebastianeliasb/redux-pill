@@ -14,7 +14,9 @@ export const getUsers = (api = makeApi()) => {
 export const getUser = (userId, api = makeApi()) => {
   return api.get(`/${userId}`);
 };
-
+export const signIn = (email, password, api = makeApi()) => {
+  return api.get(`/?email=${email}&password=${password}`);
+};
 // export const getUrl = (url, api = makeApi()) => {
 //   return api.get(url);
 // };

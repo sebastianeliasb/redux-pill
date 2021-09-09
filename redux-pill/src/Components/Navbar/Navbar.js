@@ -1,13 +1,35 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+
+import { useSelector, useDispatch } from "react-redux";
+
+import { Link, useLocation, useHistory } from "react-router-dom";
 import { Input, Icon } from "@ui5/webcomponents-react";
+
+import { getSearchedPropertiesByCity } from "../../redux/search/action";
 import "./Navbar.css";
 
 function Navbar() {
   const [click, setClick] = useState(false);
   const [button, setButton] = useState(true);
+  const [text, setText] = useState("");
+  const searched = useSelector((state) => state.search.properties);
+  const dispatch = useDispatch();
 
+  const url = useLocation();
+  const history = useHistory();
   const handleClick = () => setClick(!click);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log("Handle Submit", text);
+    dispatch(getSearchedPropertiesByCity(text));
+    history.push("/filter-page");
+    closeMobilMenu();
+  };
+
+  const handelChange = (e) => {
+    setText(e.target.value);
+  };
   const closeMobilMenu = () => setClick(false);
 
   const showButton = () => {
@@ -18,6 +40,10 @@ function Navbar() {
     }
   };
 
+  const handleSearch = (e) => {
+    console.log("Handle Search", text);
+    dispatch(getSearchedPropertiesByCity(text));
+  };
   useEffect(() => {
     showButton();
   }, []);
@@ -32,13 +58,17 @@ function Navbar() {
             <i className="fas fa-home" />
           </Link>
         </div>
-        <div>
-          <Input
-            className="search-bar-navbar"
-            icon={<Icon name="search" />}
-            placeholder="Search by city..."
-          />
-        </div>
+        {url.pathname === "/filter-page" ? null : (
+          <form onSubmit={handleSubmit}>
+            <Input
+              icon={<Icon name="search" onClick={handleSubmit} />}
+              className="search-bar"
+              placeholder="Search by city..."
+              onChange={handelChange}
+            />
+          </form>
+        )}
+
         <div className="menu-icon" onClick={handleClick}>
           <i className={click ? "fas fa-times" : "fas fa-bars"} />
         </div>

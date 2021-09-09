@@ -1,5 +1,9 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./styles.css";
+
+import { useSelector, useDispatch } from "react-redux";
+import { getSearchedPropertiesByCity } from "../../redux/search/action";
+
 import withLayout from "../../hoc/withLayout";
 import TableHeader from "../../Components/TableHeader";
 import TableEntry from "../../Components/TableEntry";
@@ -8,6 +12,14 @@ import Filters from "../../Components/Filters";
 import { Table } from "@ui5/webcomponents-react";
 
 function FilterPage() {
+  const searched = useSelector((state) => state.search.properties);
+  // console.log(
+  //   searched,
+  //   "+++++++++++++++++++++++++++++searched from filter page"
+  // );
+  // console.log(typeof searched);
+  const dispatch = useDispatch();
+
   return (
     //Filter Side
     <div className="container mt-3">
@@ -30,8 +42,11 @@ function FilterPage() {
                     onRowClick={function noRefCheck() {}}
                     onSelectionChange={function noRefCheck() {}}
                   >
-                    <TableEntry />
+                    {searched.map((item) => {
+                      return <TableEntry item={item} />;
+                    })}
                   </Table>
+
                   <ul className="pagination">
                     <li className="disabled">
                       <a href="#">«</a>
