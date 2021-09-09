@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
+
 import { useSelector, useDispatch } from "react-redux";
 
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useHistory } from "react-router-dom";
 import { Input, Icon } from "@ui5/webcomponents-react";
 
 import { getSearchedPropertiesByCity } from "../../redux/search/action";
@@ -14,16 +15,16 @@ function Navbar() {
   const searched = useSelector((state) => state.search.properties);
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    dispatch(getSearchedPropertiesByCity(text));
-  }, []);
-
   const url = useLocation();
-
+  const history = useHistory();
   const handleClick = () => setClick(!click);
+
   const handleSubmit = (e) => {
     e.preventDefault();
+    console.log("Handle Submit", text);
     dispatch(getSearchedPropertiesByCity(text));
+    history.push("/filter-page");
+    closeMobilMenu();
   };
 
   const handelChange = (e) => {
@@ -40,6 +41,7 @@ function Navbar() {
   };
 
   const handleSearch = (e) => {
+    console.log("Handle Search", text);
     dispatch(getSearchedPropertiesByCity(text));
   };
   useEffect(() => {
@@ -59,18 +61,7 @@ function Navbar() {
         {url.pathname === "/filter-page" ? null : (
           <form onSubmit={handleSubmit}>
             <Input
-              icon={
-                <Link
-                  to={{
-                    pathname: "/filter-page",
-                    query: { searched: searched },
-                  }}
-                  className="nav-links"
-                  onClick={closeMobilMenu}
-                >
-                  <Icon name="search" onClick={handleSearch} />
-                </Link>
-              }
+              icon={<Icon name="search" onClick={handleSubmit} />}
               className="search-bar"
               placeholder="Search by city..."
               onChange={handelChange}

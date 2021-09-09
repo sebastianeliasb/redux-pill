@@ -8,14 +8,13 @@ import {
 } from "../../redux/search/action";
 
 function Home() {
-  const search = useSelector((state) => state.search);
+  // const search = useSelector((state) => state.search);
 
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
 
-  useEffect(() => {
-    dispatch(getAllProperties());
-  }, []);
-  console.log(search);
+  // useEffect(() => {
+  //   dispatch(getAllProperties());
+  // }, []);
   return (
     <>
       <Hero />

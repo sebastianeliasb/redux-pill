@@ -36,7 +36,7 @@
   letter-spacing: 10px;
 }
 .hero-btns .btn:hover {
-  background-color: #f5852a;
+  background-color: rgba(245, 133, 42, 0.9);
 }
 .fa-play-circle {
   margin-left: 4px;
