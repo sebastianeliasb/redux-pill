@@ -21,3 +21,7 @@ export const getSearchedProperties = (searchedProperties, api = makeApi()) => {
 // export const getUrl = (url, api = makeApi()) => {
 //   return api.get(url);
 // };
+
+export const getPropertiesByCity = (city, api = makeApi()) => {
+  return api.get(`?city=${city}`);
+};

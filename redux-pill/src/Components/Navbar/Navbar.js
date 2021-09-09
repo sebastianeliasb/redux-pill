@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { Link, useLocation } from "react-router-dom";
 import { Input, Icon } from "@ui5/webcomponents-react";
 
-import { getAllSearchedProperties } from "../../redux/search/action";
+import { getSearchedPropertiesByCity } from "../../redux/search/action";
 import "./Navbar.css";
 
 function Navbar() {
@@ -12,17 +12,18 @@ function Navbar() {
   const [button, setButton] = useState(true);
   const [text, setText] = useState("");
   const searched = useSelector((state) => state.search.properties);
-  console.log(searched, "++++++++++searched");
   const dispatch = useDispatch();
+
   useEffect(() => {
-    dispatch(getAllSearchedProperties(text));
+    dispatch(getSearchedPropertiesByCity(text));
   }, []);
+
   const url = useLocation();
 
   const handleClick = () => setClick(!click);
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(getAllSearchedProperties(text));
+    dispatch(getSearchedPropertiesByCity(text));
   };
 
   const handelChange = (e) => {
@@ -38,6 +39,9 @@ function Navbar() {
     }
   };
 
+  const handleSearch = (e) => {
+    dispatch(getSearchedPropertiesByCity(text));
+  };
   useEffect(() => {
     showButton();
   }, []);
@@ -64,12 +68,7 @@ function Navbar() {
                   className="nav-links"
                   onClick={closeMobilMenu}
                 >
-                  <Icon
-                    name="search"
-                    onClick={() => {
-                      dispatch(getAllSearchedProperties(text));
-                    }}
-                  />
+                  <Icon name="search" onClick={handleSearch} />
                 </Link>
               }
               className="search-bar"
