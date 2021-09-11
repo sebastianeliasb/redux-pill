@@ -3,6 +3,7 @@ import "./styles.css";
 
 import { useSelector, useDispatch } from "react-redux";
 import { getSearchedPropertiesByCity } from "../../redux/search/action";
+import { buildParamsURL } from "../../utils/stringSetter";
 
 import withLayout from "../../hoc/withLayout";
 import TableHeader from "../../Components/TableHeader";
@@ -20,6 +21,7 @@ function FilterPage() {
   // console.log(typeof searched);
   const dispatch = useDispatch();
 
+  buildParamsURL();
   return (
     //Filter Side
     <div className="container mt-3">
