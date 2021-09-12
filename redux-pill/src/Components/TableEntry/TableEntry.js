@@ -2,6 +2,7 @@ import React from "react";
 import { TableCell, TableRow, Label, Badge } from "@ui5/webcomponents-react";
 
 function TableEntry({ item }) {
+  console.log(item);
   return (
     <>
       <TableRow>
@@ -10,7 +11,7 @@ function TableEntry({ item }) {
         </TableCell>
         <TableCell>
           <Label className="address">
-            {item.streetNumber} <br></br>
+            {item.number} <br></br>
             {item.street} <br></br>
             {item.city} <br></br>
             {item.province} {item.country}

@@ -2,7 +2,6 @@ import React, { useEffect } from "react";
 import "./styles.css";
 
 import { useSelector, useDispatch } from "react-redux";
-import { getSearchedPropertiesByCity } from "../../redux/search/action";
 
 import withLayout from "../../hoc/withLayout";
 import TableHeader from "../../Components/TableHeader";
@@ -13,12 +12,7 @@ import { Table } from "@ui5/webcomponents-react";
 
 function FilterPage() {
   const searched = useSelector((state) => state.search.properties);
-  // console.log(
-  //   searched,
-  //   "+++++++++++++++++++++++++++++searched from filter page"
-  // );
-  // console.log(typeof searched);
-  const dispatch = useDispatch();
+  const filter = useSelector((state) => state.filter);
 
   return (
     //Filter Side

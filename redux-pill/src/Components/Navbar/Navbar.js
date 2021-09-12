@@ -40,10 +40,6 @@ function Navbar() {
     }
   };
 
-  const handleSearch = (e) => {
-    console.log("Handle Search", text);
-    dispatch(getSearchedPropertiesByCity(text));
-  };
   useEffect(() => {
     showButton();
   }, []);

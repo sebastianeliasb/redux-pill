@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   DatePicker,
   Select,
+  Option,
   CheckBox,
   RangeSlider,
   Input,
@@ -9,6 +10,45 @@ import {
 } from "@ui5/webcomponents-react";
 
 function Filters() {
+  const [value, setValue] = useState({
+    type: [],
+    condition: "",
+    pet: false,
+    air_conditioning: false,
+    lift: false,
+    garden: false,
+    swimming_pool: false,
+    terrace: false,
+  });
+
+  console.log(value);
+  const selectedBedRooms = [
+    { id: "bed1", text: "1" },
+    { id: "bed2", text: "2" },
+    { id: "bed3", text: "3" },
+    { id: "bed4", text: "4 or +" },
+  ];
+  const selectedBathRooms = [
+    { id: "bath1", text: "1" },
+    { id: "bath2", text: "2" },
+    { id: "bath3", text: "3" },
+    { id: "bath4", text: "4 or +" },
+  ];
+  const onChange = (event) => {
+    // event.detail.selectedOption is a reference to the selected HTML Element
+    // dataset contains all attributes that were passed with the data- prefix.
+    console.log(event.detail.selectedOption.dataset.id);
+  };
+  // const handleCheckbox = (e) => {
+  //   // console.log(e.target.attributes.value.value);
+  //   console.log(e.target.checked);
+  //   if (e.target.checked) {
+  //     setValue({e.target.attributes.value.value});
+  //   }
+  // };
+
+  //TODO  make a function that handles type! const types = []
+  //& It has to return types array and set it to the value
   return (
     <>
       <h3 className="grid-title">
@@ -17,35 +57,101 @@ function Filters() {
       <div className="filter-box">
         <h6>Type of Home:</h6>
         <div className="checkbox">
-          <CheckBox text="Flat/Apartment" className="checkboxes" />
-          <CheckBox text="House" className="checkboxes" />
-          <CheckBox text="Duplex" className="checkboxes" />
-          <CheckBox text="Penthouse" className="checkboxes" />
+          <CheckBox
+            text="Flat/Apartment"
+            className="checkboxes"
+            value="flat/apartment"
+            onChange={(e) => {
+              if (e.target.checked) {
+                setValue({ type: e.target.attributes.value.value });
+              }
+            }}
+          />
+          <CheckBox
+            value="house"
+            text="House"
+            className="checkboxes"
+            onChange={(e) => {
+              if (e.target.checked) {
+                setValue({ type: e.target.attributes.value.value });
+              }
+            }}
+          />
+          <CheckBox
+            value="duplex"
+            text="Duplex"
+            className="checkboxes"
+            onChange={(e) => {
+              if (e.target.checked) {
+                setValue({ type: e.target.attributes.value.value });
+              }
+            }}
+          />
+          <CheckBox
+            value="penthouse"
+            text="Penthouse"
+            className="checkboxes"
+            onChange={(e) => {
+              if (e.target.checked) {
+                setValue({ type: e.target.attributes.value.value });
+              }
+            }}
+          />
         </div>
       </div>
       <div className="filter-box">
         <h6>Condition:</h6>
         <div className="checkbox">
-          <CheckBox text="New homes" className="checkboxes" />
-          <CheckBox text="Good condition" className="checkboxes" />
-          <CheckBox text="Needs renovation" className="checkboxes" />
+          <CheckBox
+            text="New homes"
+            className="checkboxes"
+            value="new"
+            onChange={(e) => {
+              if (e.target.checked) {
+                setValue({ condition: e.target.attributes.value.value });
+              }
+            }}
+          />
+          <CheckBox
+            text="Good condition"
+            className="checkboxes"
+            value="good"
+            onChange={(e) => {
+              if (e.target.checked) {
+                setValue({ condition: e.target.attributes.value.value });
+              }
+            }}
+          />
+          <CheckBox
+            text="Needs renovation"
+            className="checkboxes"
+            value="need-renovation"
+            onChange={(e) => {
+              if (e.target.checked) {
+                setValue({ condition: e.target.attributes.value.value });
+              }
+            }}
+          />
         </div>
       </div>
       <div className="filter-box">
         <h6>Bedrooms:</h6>
-        <Select>
-          <option>1</option>
-          <option>2</option>
-          <option>3</option>
-          <option>4 or +</option>
+        <Select onChange={onChange}>
+          {selectedBedRooms.map((item) => (
+            <Option key={item.id} data-id={item.id}>
+              {item.text}
+            </Option>
+          ))}
         </Select>
       </div>
       <div className="filter-box">
         <h6>Bathrooms:</h6>
-        <Select>
-          <option>1</option>
-          <option>2</option>
-          <option>3 or +</option>
+        <Select onChange={onChange}>
+          {selectedBathRooms.map((item) => (
+            <Option key={item.id} data-id={item.id}>
+              {item.text}
+            </Option>
+          ))}
         </Select>
       </div>
       <div className="filter-box">
@@ -67,12 +173,36 @@ function Filters() {
       <div className="filter-box">
         <h6>More Filters:</h6>
         <div className="checkbox">
-          <CheckBox text="Pets allowed" />
-          <CheckBox text="Air conditioning" />
-          <CheckBox text="Lift" />
-          <CheckBox text="Garden" />
-          <CheckBox text="Swimming pool" />
-          <CheckBox text="Terrace" />
+          <CheckBox
+            text="Pets allowed"
+            onChange={(e) => setValue({ pet: e.target.checked })}
+            value={value.pet}
+          />
+          <CheckBox
+            text="Air conditioning"
+            onChange={(e) => setValue({ air_conditioning: e.target.checked })}
+            value={value.air_conditioning}
+          />
+          <CheckBox
+            text="Lift"
+            onChange={(e) => setValue({ lift: e.target.checked })}
+            value={value.lift}
+          />
+          <CheckBox
+            text="Garden"
+            onChange={(e) => setValue({ garden: e.target.checked })}
+            value={value.garden}
+          />
+          <CheckBox
+            text="Swimming pool"
+            onChange={(e) => setValue({ swimming_pool: e.target.checked })}
+            value={value.swimming_pool}
+          />
+          <CheckBox
+            text="Terrace"
+            onChange={(e) => setValue({ terrace: e.target.checked })}
+            value={value.terrace}
+          />
         </div>
       </div>
       {/* Result Side  */}
