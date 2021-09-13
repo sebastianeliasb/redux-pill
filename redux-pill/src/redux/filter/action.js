@@ -5,8 +5,7 @@ import INITIAL_STATE from "./state";
 
 export const getFilteredProperties = (searchedFilter, properties) => {
   console.log("searched filter => ", typeof(searchedFilter));
-  buildParamsURL(searchedFilter);
-  let string = "";
+  let string = buildParamsURL(searchedFilter);
 
   // console.log(searchedFilter, "actions ===========================");
   properties.map((item) => {

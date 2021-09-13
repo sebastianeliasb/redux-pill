@@ -12,12 +12,13 @@ import {
 
 import { getFilteredProperties } from "../../redux/filter/action";
 
-function Filters({ allProperties, filter, searched }) {
+function Filters({ allProperties, filterState, searched }) {
   const dispatch = useDispatch();
   // const properties = useSelector((state) => state.search.allProperties);
 
   console.log(allProperties, "ALL PROPERTIES");
-  const state = filter;
+  const state = filterState;
+  console.log(state, "hello filters");
   // const [value, setValue] = useState({
   //   type: "",
   //   condition: "",
@@ -86,7 +87,6 @@ function Filters({ allProperties, filter, searched }) {
       //     ),
       //   ],
       // };
-
       // setValue(newValue);
     }
     // dispatch(getFilteredProperties(value));
@@ -114,7 +114,6 @@ function Filters({ allProperties, filter, searched }) {
       //     ),
       //   ],
       // };
-
       // setValue(newValue);
     }
   };
@@ -143,7 +142,7 @@ function Filters({ allProperties, filter, searched }) {
           <CheckBox
             text="Flat/Apartment"
             className="checkboxes"
-            name = "flat/apartment"
+            name="flat/apartment"
             value="flat/apartment"
             onChange={handleType}
           />
