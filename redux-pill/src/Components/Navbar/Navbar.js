@@ -5,14 +5,17 @@ import { useSelector, useDispatch } from "react-redux";
 import { Link, useLocation, useHistory } from "react-router-dom";
 import { Input, Icon } from "@ui5/webcomponents-react";
 
-import { getSearchedPropertiesByCity } from "../../redux/search/action";
+import {
+  getAllProperties,
+  getSearchedPropertiesByCity,
+} from "../../redux/search/action";
 import "./Navbar.css";
 
 function Navbar() {
   const [click, setClick] = useState(false);
   const [button, setButton] = useState(true);
   const [text, setText] = useState("");
-  const searched = useSelector((state) => state.search.properties);
+  // const searched = useSelector((state) => state.search);
   const dispatch = useDispatch();
 
   const url = useLocation();
@@ -23,7 +26,9 @@ function Navbar() {
     e.preventDefault();
     console.log("Handle Submit", text);
     dispatch(getSearchedPropertiesByCity(text));
-    history.push("/filter-page");
+    history.push({
+      pathname: "/filter-page",
+    });
     closeMobilMenu();
   };
 

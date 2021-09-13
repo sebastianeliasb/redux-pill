@@ -2,7 +2,6 @@ import React from "react";
 import { TableCell, TableRow, Label, Badge } from "@ui5/webcomponents-react";
 
 function TableEntry({ item }) {
-  console.log(item);
   return (
     <>
       <TableRow>

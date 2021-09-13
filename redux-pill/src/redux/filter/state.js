@@ -11,6 +11,7 @@ const INITIAL_STATE = {
   air_conditioning: false,
   swimming_pool: false,
   terrace: false,
+  filter: [],
 };
 
 export default INITIAL_STATE;

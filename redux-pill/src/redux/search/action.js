@@ -8,7 +8,7 @@ import {
 export const getAllProperties = () => {
   return async (dispatch) => {
     const result = await getProperties();
-    dispatch({ type: GET_PROPERTIES, payload: result });
+    dispatch({ type: GET_PROPERTIES, payload: result.data });
   };
 };
 
@@ -23,8 +23,6 @@ export const getAllProperties = () => {
 export const getSearchedPropertiesByCity = (searchedCity) => {
   return async (dispatch) => {
     const data = await getPropertiesByCity(searchedCity);
-    // console.log(searchedCity, "Searched City");
-    // console.log(data.data, "action");
     dispatch({ type: GET_SEARCHED_PROPERTIES, payload: data.data });
   };
 };

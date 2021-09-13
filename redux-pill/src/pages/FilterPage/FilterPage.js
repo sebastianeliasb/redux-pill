@@ -1,7 +1,9 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import "./styles.css";
 
 import { useSelector, useDispatch } from "react-redux";
+import { getAllProperties } from "../../redux/search/action";
+import { buildParamsURL } from "../../utils/stringSetter";
 
 import withLayout from "../../hoc/withLayout";
 import TableHeader from "../../Components/TableHeader";
@@ -11,8 +13,15 @@ import Filters from "../../Components/Filters";
 import { Table } from "@ui5/webcomponents-react";
 
 function FilterPage() {
+  const allProperties = useSelector((state) => state.search.allProperties);
   const searched = useSelector((state) => state.search.properties);
-  const filter = useSelector((state) => state.filter);
+  const filter = useSelector((state) => state.filter.filter);
+  const dispatch = useDispatch();
+  // buildParamsURL();
+  console.log(filter, "filter");
+  useEffect(() => {
+    dispatch(getAllProperties());
+  }, []);
 
   return (
     //Filter Side
@@ -23,7 +32,7 @@ function FilterPage() {
             <div className="grid-body">
               <div className="row">
                 <div className="col-md-12">
-                  <Filters />
+                  <Filters allProperties={allProperties} />
                   <Table
                     className="tableContainer"
                     columns={
@@ -36,9 +45,13 @@ function FilterPage() {
                     onRowClick={function noRefCheck() {}}
                     onSelectionChange={function noRefCheck() {}}
                   >
-                    {searched.map((item) => {
-                      return <TableEntry item={item} />;
-                    })}
+                    {filter.length !== 0
+                      ? filter.map((item) => {
+                          return <TableEntry item={item} />;
+                        })
+                      : allProperties.map((item) => {
+                          return <TableEntry item={item} />;
+                        })}
                   </Table>
 
                   <ul className="pagination">

@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import {
   DatePicker,
   Select,
@@ -9,46 +10,124 @@ import {
   Icon,
 } from "@ui5/webcomponents-react";
 
-function Filters() {
+import { getFilteredProperties } from "../../redux/filter/action";
+
+function Filters({ allProperties }) {
+  const dispatch = useDispatch();
+  // const properties = useSelector((state) => state.search.allProperties);
+
+  console.log(allProperties, "ALL PROPERTIES");
+  const state = useSelector((state) => state.filter.filter);
   const [value, setValue] = useState({
-    type: [],
+    type: "",
     condition: "",
+    room: 0,
+    bath: 0,
+    size: 0,
+    price: 0,
     pet: false,
-    air_conditioning: false,
     lift: false,
     garden: false,
+    air_conditioning: false,
     swimming_pool: false,
     terrace: false,
+    filter: [],
   });
+  useEffect(() => {
+    dispatch(getFilteredProperties(value));
+  }, [value]);
 
-  console.log(value);
+  // console.log(value, "value");
   const selectedBedRooms = [
-    { id: "bed1", text: "1" },
-    { id: "bed2", text: "2" },
-    { id: "bed3", text: "3" },
-    { id: "bed4", text: "4 or +" },
+    { id: "0", text: "0" },
+    { id: "1", text: "1 bedroom" },
+    { id: "2", text: "2 bedrooms" },
+    { id: "3", text: "3 bedrooms" },
+    { id: "4", text: "4 bedrooms" },
+    { id: "5", text: "5 bedrooms" },
+    { id: "6", text: "6 bedrooms" },
   ];
   const selectedBathRooms = [
-    { id: "bath1", text: "1" },
-    { id: "bath2", text: "2" },
-    { id: "bath3", text: "3" },
-    { id: "bath4", text: "4 or +" },
+    { id: "0", text: "0" },
+    { id: "1", text: "1 bathroom" },
+    { id: "2", text: "2 bathrooms" },
+    { id: "3", text: "3 bathrooms" },
+    { id: "4", text: "4 or + bathrooms" },
   ];
   const onChange = (event) => {
     // event.detail.selectedOption is a reference to the selected HTML Element
     // dataset contains all attributes that were passed with the data- prefix.
-    console.log(event.detail.selectedOption.dataset.id);
+    console.log(event.detail.selectedOption.dataset.id, "change!!!!!!");
   };
-  // const handleCheckbox = (e) => {
-  //   // console.log(e.target.attributes.value.value);
-  //   console.log(e.target.checked);
-  //   if (e.target.checked) {
-  //     setValue({e.target.attributes.value.value});
-  //   }
-  // };
+  console.log(value);
+  const handleType = (e) => {
+    if (e.target.checked) {
+      setValue({
+        ...value,
+        type: e.target.attributes.value.value,
+        filter: [
+          ...value.filter,
+          ...allProperties.filter(
+            (item) => item.type === e.target.attributes.value.value
+          ),
+        ],
+      });
+    } else {
+      let newValue = {
+        ...value,
+        type: "",
+        filter: [
+          ...value.filter.filter(
+            (item) => item.type !== e.target.attributes.value.value
+          ),
+        ],
+      };
 
-  //TODO  make a function that handles type! const types = []
-  //& It has to return types array and set it to the value
+      setValue(newValue);
+    }
+    // dispatch(getFilteredProperties(value));
+  };
+
+  const handleCondition = (e) => {
+    if (e.target.checked) {
+      setValue({
+        ...value,
+        condition: e.target.attributes.value.value,
+        filter: [
+          ...value.filter,
+          ...allProperties.filter(
+            (item) => item.condition === e.target.attributes.value.value
+          ),
+        ],
+      });
+    } else {
+      let newValue = {
+        ...value,
+        condition: "",
+        filter: [
+          ...value.filter.filter(
+            (item) => item.condition !== e.target.attributes.value.value
+          ),
+        ],
+      };
+
+      setValue(newValue);
+    }
+  };
+
+  const handleBedrooms = (e) => {
+    console.log(e.detail.selectedOption.dataset.id, "change!!!!!!");
+    setValue({
+      ...value,
+      room: e.detail.selectedOption.dataset.id,
+      filter: [
+        ...allProperties.filter(
+          (item) => item.room == e.detail.selectedOption.dataset.id
+        ),
+      ],
+    });
+  };
+
   return (
     <>
       <h3 className="grid-title">
@@ -61,41 +140,25 @@ function Filters() {
             text="Flat/Apartment"
             className="checkboxes"
             value="flat/apartment"
-            onChange={(e) => {
-              if (e.target.checked) {
-                setValue({ type: e.target.attributes.value.value });
-              }
-            }}
+            onChange={handleType}
           />
           <CheckBox
             value="house"
             text="House"
             className="checkboxes"
-            onChange={(e) => {
-              if (e.target.checked) {
-                setValue({ type: e.target.attributes.value.value });
-              }
-            }}
+            onChange={handleType}
           />
           <CheckBox
             value="duplex"
             text="Duplex"
             className="checkboxes"
-            onChange={(e) => {
-              if (e.target.checked) {
-                setValue({ type: e.target.attributes.value.value });
-              }
-            }}
+            onChange={handleType}
           />
           <CheckBox
             value="penthouse"
             text="Penthouse"
             className="checkboxes"
-            onChange={(e) => {
-              if (e.target.checked) {
-                setValue({ type: e.target.attributes.value.value });
-              }
-            }}
+            onChange={handleType}
           />
         </div>
       </div>
@@ -106,37 +169,25 @@ function Filters() {
             text="New homes"
             className="checkboxes"
             value="new"
-            onChange={(e) => {
-              if (e.target.checked) {
-                setValue({ condition: e.target.attributes.value.value });
-              }
-            }}
+            onChange={handleCondition}
           />
           <CheckBox
             text="Good condition"
             className="checkboxes"
             value="good"
-            onChange={(e) => {
-              if (e.target.checked) {
-                setValue({ condition: e.target.attributes.value.value });
-              }
-            }}
+            onChange={handleCondition}
           />
           <CheckBox
             text="Needs renovation"
             className="checkboxes"
-            value="need-renovation"
-            onChange={(e) => {
-              if (e.target.checked) {
-                setValue({ condition: e.target.attributes.value.value });
-              }
-            }}
+            value="reform"
+            onChange={handleCondition}
           />
         </div>
       </div>
       <div className="filter-box">
         <h6>Bedrooms:</h6>
-        <Select onChange={onChange}>
+        <Select onChange={handleBedrooms}>
           {selectedBedRooms.map((item) => (
             <Option key={item.id} data-id={item.id}>
               {item.text}
