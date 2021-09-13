@@ -12,30 +12,33 @@ import {
 
 import { getFilteredProperties } from "../../redux/filter/action";
 
-function Filters({ allProperties }) {
+function Filters({ allProperties, filter, searched }) {
   const dispatch = useDispatch();
   // const properties = useSelector((state) => state.search.allProperties);
 
   console.log(allProperties, "ALL PROPERTIES");
-  const state = useSelector((state) => state.filter.filter);
-  const [value, setValue] = useState({
-    type: "",
-    condition: "",
-    room: 0,
-    bath: 0,
-    size: 0,
-    price: 0,
-    pet: false,
-    lift: false,
-    garden: false,
-    air_conditioning: false,
-    swimming_pool: false,
-    terrace: false,
-    filter: [],
-  });
+  const state = filter;
+  // const [value, setValue] = useState({
+  //   type: "",
+  //   condition: "",
+  //   room: 0,
+  //   bath: 0,
+  //   size: 0,
+  //   price: 0,
+  //   pet: false,
+  //   lift: false,
+  //   garden: false,
+  //   air_conditioning: false,
+  //   swimming_pool: false,
+  //   terrace: false,
+  //   filter: [],
+  // });
+  // useEffect(() => {
+  //   dispatch(getFilteredProperties(value));
+  // }, [value]);
   useEffect(() => {
-    dispatch(getFilteredProperties(value));
-  }, [value]);
+    dispatch(getFilteredProperties(state, searched));
+  }, [state]);
 
   // console.log(value, "value");
   const selectedBedRooms = [
@@ -59,73 +62,74 @@ function Filters({ allProperties }) {
     // dataset contains all attributes that were passed with the data- prefix.
     console.log(event.detail.selectedOption.dataset.id, "change!!!!!!");
   };
-  console.log(value);
+  // console.log(value);
   const handleType = (e) => {
+    console.log("type name => ", e.target.name);
     if (e.target.checked) {
-      setValue({
-        ...value,
-        type: e.target.attributes.value.value,
-        filter: [
-          ...value.filter,
-          ...allProperties.filter(
-            (item) => item.type === e.target.attributes.value.value
-          ),
-        ],
-      });
+      // setValue({
+      //   ...value,
+      //   type: e.target.attributes.value.value,
+      //   filter: [
+      //     ...value.filter,
+      //     ...allProperties.filter(
+      //       (item) => item.type === e.target.attributes.value.value
+      //     ),
+      //   ],
+      // });
     } else {
-      let newValue = {
-        ...value,
-        type: "",
-        filter: [
-          ...value.filter.filter(
-            (item) => item.type !== e.target.attributes.value.value
-          ),
-        ],
-      };
+      // let newValue = {
+      //   ...value,
+      //   type: "",
+      //   filter: [
+      //     ...value.filter.filter(
+      //       (item) => item.type !== e.target.attributes.value.value
+      //     ),
+      //   ],
+      // };
 
-      setValue(newValue);
+      // setValue(newValue);
     }
     // dispatch(getFilteredProperties(value));
   };
 
   const handleCondition = (e) => {
     if (e.target.checked) {
-      setValue({
-        ...value,
-        condition: e.target.attributes.value.value,
-        filter: [
-          ...value.filter,
-          ...allProperties.filter(
-            (item) => item.condition === e.target.attributes.value.value
-          ),
-        ],
-      });
+      // setValue({
+      //   ...value,
+      //   condition: e.target.attributes.value.value,
+      //   filter: [
+      //     ...value.filter,
+      //     ...allProperties.filter(
+      //       (item) => item.condition === e.target.attributes.value.value
+      //     ),
+      //   ],
+      // });
     } else {
-      let newValue = {
-        ...value,
-        condition: "",
-        filter: [
-          ...value.filter.filter(
-            (item) => item.condition !== e.target.attributes.value.value
-          ),
-        ],
-      };
+      // let newValue = {
+      //   ...value,
+      //   condition: "",
+      //   filter: [
+      //     ...value.filter.filter(
+      //       (item) => item.condition !== e.target.attributes.value.value
+      //     ),
+      //   ],
+      // };
 
-      setValue(newValue);
+      // setValue(newValue);
     }
   };
 
   const handleBedrooms = (e) => {
     console.log(e.detail.selectedOption.dataset.id, "change!!!!!!");
-    setValue({
-      ...value,
-      room: e.detail.selectedOption.dataset.id,
-      filter: [
-        ...allProperties.filter(
-          (item) => item.room == e.detail.selectedOption.dataset.id
-        ),
-      ],
-    });
+    // setValue({
+    //   ...value,
+    //   room: e.detail.selectedOption.dataset.id,
+    //   filter: [
+    //     ...allProperties.filter(
+    //       (item) => item.room == e.detail.selectedOption.dataset.id
+    //     ),
+    //   ],
+    // });
   };
 
   return (
@@ -139,6 +143,7 @@ function Filters({ allProperties }) {
           <CheckBox
             text="Flat/Apartment"
             className="checkboxes"
+            name = "flat/apartment"
             value="flat/apartment"
             onChange={handleType}
           />
@@ -226,33 +231,45 @@ function Filters({ allProperties }) {
         <div className="checkbox">
           <CheckBox
             text="Pets allowed"
-            onChange={(e) => setValue({ pet: e.target.checked })}
-            value={value.pet}
+            // onChange={(e) => setValue({ pet: e.target.checked })}
+            // value={value.pet}
+            // onChange={(e) => setValue({ pet: e.target.checked })}
+            // value={value.pet}
           />
           <CheckBox
             text="Air conditioning"
-            onChange={(e) => setValue({ air_conditioning: e.target.checked })}
-            value={value.air_conditioning}
+            // onChange={(e) => setValue({ air_conditioning: e.target.checked })}
+            // value={value.air_conditioning}
+            // onChange={(e) => setValue({ air_conditioning: e.target.checked })}
+            // value={value.air_conditioning}
           />
           <CheckBox
             text="Lift"
-            onChange={(e) => setValue({ lift: e.target.checked })}
-            value={value.lift}
+            // onChange={(e) => setValue({ lift: e.target.checked })}
+            // value={value.lift}
+            // onChange={(e) => setValue({ lift: e.target.checked })}
+            // value={value.lift}
           />
           <CheckBox
             text="Garden"
-            onChange={(e) => setValue({ garden: e.target.checked })}
-            value={value.garden}
+            // onChange={(e) => setValue({ garden: e.target.checked })}
+            // value={value.garden}
+            // onChange={(e) => setValue({ garden: e.target.checked })}
+            // value={value.garden}
           />
           <CheckBox
             text="Swimming pool"
-            onChange={(e) => setValue({ swimming_pool: e.target.checked })}
-            value={value.swimming_pool}
+            // onChange={(e) => setValue({ swimming_pool: e.target.checked })}
+            // value={value.swimming_pool}
+            // onChange={(e) => setValue({ swimming_pool: e.target.checked })}
+            // value={value.swimming_pool}
           />
           <CheckBox
             text="Terrace"
-            onChange={(e) => setValue({ terrace: e.target.checked })}
-            value={value.terrace}
+            // onChange={(e) => setValue({ terrace: e.target.checked })}
+            // value={value.terrace}
+            // onChange={(e) => setValue({ terrace: e.target.checked })}
+            // value={value.terrace}
           />
         </div>
       </div>
