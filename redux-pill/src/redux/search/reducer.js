@@ -5,7 +5,7 @@ import INITIAL_STATE from "./state";
 const reducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
     case GET_PROPERTIES: {
-      return { ...state, properties: action.payload };
+      return { ...state, allProperties: action.payload };
     }
     case GET_SEARCHED_PROPERTIES: {
       return { ...state, properties: action.payload };

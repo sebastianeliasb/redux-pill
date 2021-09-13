@@ -4,13 +4,13 @@ import "bootstrap/dist/js/bootstrap.bundle.min";
 import ReactDOM from "react-dom";
 
 import App from "./App";
-import { store } from "./redux/store";
+import store from "./redux/store";
 import Provider from "./redux/provider";
 import * as serviceWorker from "./serviceWorker";
 import { createStore } from "redux";
 
 ReactDOM.render(
-  <Provider>
+  <Provider store={store}>
     <App />
   </Provider>,
   // <App />,
