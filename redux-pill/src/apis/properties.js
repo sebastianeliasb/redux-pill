@@ -24,5 +24,5 @@ export const getPropertiesByCity = (city, api = makeApi()) => {
 };
 
 export const getPropertiesByFilter = (filter, api = makeApi()) => {
-  return api.get(`?${filter}`);
+  return api.get(`${filter}`);
 };

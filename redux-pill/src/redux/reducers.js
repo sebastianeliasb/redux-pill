@@ -3,7 +3,7 @@ import filterReducer from "./filter/reducer";
 import searchReducer from "./search/reducer";
 
 const rootReducer = combineReducers({
-  filter: filterReducer,
+  filters: filterReducer,
   search: searchReducer,
 });
 
