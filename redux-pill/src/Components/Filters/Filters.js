@@ -141,7 +141,7 @@ function Filters({
       case "sortByPrice":
         const sortedByPrice = allProperties.sort((a, b) => a.price - b.price);
         console.log(sortedByPrice, "sortedByPrice");
-        dispatch(getFilteredArray([...properties, sortedByPrice]));
+        dispatch(getFilteredArray([sortedByPrice]));
         // setValue({ ...value, filter: sortedByPrice });
         break;
       case "sortByRoom":
