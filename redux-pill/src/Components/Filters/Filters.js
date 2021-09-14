@@ -1,7 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
-  DatePicker,
   Select,
   Option,
   CheckBox,
@@ -15,64 +14,32 @@ import {
   getFilteredArray,
 } from "../../redux/filter/action";
 
-function Filters({
-  allProperties,
-  filterState,
-  searched,
-  filters,
-  properties,
-}) {
+function Filters({ allProperties, filterState, filters, properties }) {
   const dispatch = useDispatch();
-  // const properties = useSelector((state) => state.search.allProperties);
   console.log(filters, "FILTERS");
   console.log(allProperties, "ALL PROPERTIES");
   const state = filterState;
-  console.log(state, "hello filters");
-  // const [value, setValue] = useState({
-  //   type: "",
-  //   condition: "",
-  //   room: 0,
-  //   bath: 0,
-  //   size: 0,
-  //   price: 0,
-  //   pet: false,
-  //   lift: false,
-  //   garden: false,
-  //   air_conditioning: false,
-  //   swimming_pool: false,
-  //   terrace: false,
-  //   filter: [],
-  // });
-  // useEffect(() => {
-  //   dispatch(getFilteredProperties(value));
-  // }, [value]);
+
   useEffect(() => {
     // dispatch(getFilteredProperties(state, searched));
   }, [state]);
 
-  // console.log(value, "value");
   const selectedBedRooms = [
-    { id: "0", text: "0" },
-    { id: "1", text: "1 bedroom" },
-    { id: "2", text: "2 bedrooms" },
-    { id: "3", text: "3 bedrooms" },
-    { id: "4", text: "4 bedrooms" },
-    { id: "5", text: "5 bedrooms" },
-    { id: "6", text: "6 bedrooms" },
+    { id: 0, text: "0" },
+    { id: 1, text: "1 bedroom" },
+    { id: 2, text: "2 bedrooms" },
+    { id: 3, text: "3 bedrooms" },
+    { id: 4, text: "4 bedrooms" },
+    { id: 5, text: "5 bedrooms" },
+    { id: 6, text: "6 bedrooms" },
   ];
   const selectedBathRooms = [
-    { id: "0", text: "0" },
-    { id: "1", text: "1 bathroom" },
-    { id: "2", text: "2 bathrooms" },
-    { id: "3", text: "3 bathrooms" },
-    { id: "4", text: "4 or + bathrooms" },
+    { id: 0, text: "0" },
+    { id: 1, text: "1 bathroom" },
+    { id: 2, text: "2 bathrooms" },
+    { id: 3, text: "3 bathrooms" },
+    { id: 4, text: "4 or + bathrooms" },
   ];
-  const onChange = (event) => {
-    // event.detail.selectedOption is a reference to the selected HTML Element
-    // dataset contains all attributes that were passed with the data- prefix.
-    console.log(event.detail.selectedOption.dataset.id, "change!!!!!!");
-  };
-  // console.log(value);
   const handleType = (e) => {
     console.log("type name => ", e.target.name);
     if (e.target.checked) {
@@ -81,7 +48,7 @@ function Filters({
           ...state,
           type: {
             ...state.type,
-            [e.target.name]: e.target.attributes.value.value,
+            [e.target.name]: true,
           },
         })
       );
@@ -97,7 +64,7 @@ function Filters({
       dispatch(
         getFilteredProperties({
           ...state,
-          type: "",
+          type: { ...state.type, [e.target.name]: false },
         })
       );
       dispatch(
@@ -112,67 +79,133 @@ function Filters({
 
   const handleCondition = (e) => {
     if (e.target.checked) {
-      // setValue({
-      //   ...value,
-      //   condition: e.target.attributes.value.value,
-      //   filter: [
-      //     ...value.filter,
-      //     ...allProperties.filter(
-      //       (item) => item.condition === e.target.attributes.value.value
-      //     ),
-      //   ],
-      // });
+      dispatch(
+        getFilteredProperties({
+          ...state,
+          condition: {
+            ...state.condition,
+            [e.target.attributes.value.value]: true,
+          },
+        })
+      );
+      dispatch(
+        getFilteredArray([
+          ...properties,
+          ...allProperties.filter(
+            (item) => item.condition === e.target.attributes.value.value
+          ),
+        ])
+      );
     } else {
-      // let newValue = {
-      //   ...value,
-      //   condition: "",
-      //   filter: [
-      //     ...value.filter.filter(
-      //       (item) => item.condition !== e.target.attributes.value.value
-      //     ),
-      //   ],
-      // };
-      // setValue(newValue);
+      dispatch(
+        getFilteredProperties({
+          ...state,
+          type: {
+            ...state.condition,
+            [e.target.attributes.value.value]: false,
+          },
+        })
+      );
+      dispatch(
+        getFilteredArray([
+          ...properties.filter(
+            (item) => item.condition !== e.target.attributes.value.value
+          ),
+        ])
+      );
     }
   };
   const sortProperties = (e) => {
-    console.log(e.detail.selectedOption.id);
     switch (e.detail.selectedOption.id) {
       case "sortByPrice":
-        const sortedByPrice = allProperties.sort((a, b) => a.price - b.price);
-        console.log(sortedByPrice, "sortedByPrice");
-        dispatch(getFilteredArray([sortedByPrice]));
-        // setValue({ ...value, filter: sortedByPrice });
+        const sortedByPrice = allProperties.sort((a, b) => b.price - a.price);
+        dispatch(getFilteredArray(sortedByPrice));
         break;
+      // setValue({ ...value, filter: sortedByPrice });
+
       case "sortByRoom":
-        const sortedByRoom = allProperties.sort((a, b) => a.room - b.room);
-        // setValue({ ...value, filter: sortedByRoom });
+        const sortedByRoom = allProperties.sort((a, b) => b.room - a.room);
+        dispatch(getFilteredArray(sortedByRoom));
         break;
       case "sortByBathroom":
-        const sortedByBathroom = allProperties.sort((a, b) => a.bath - b.bath);
-        // setValue({ ...value, filter: sortedByBathroom });
+        const sortedByBathroom = allProperties.sort((a, b) => b.bath - a.bath);
+        dispatch(getFilteredArray(sortedByBathroom));
         break;
       case "sortBySize":
-        const sortedBySize = allProperties.sort((a, b) => a.size - b.size);
-        // setValue({ ...value, filter: sortedBySize });
-        // console.log(value, "Size");
+        const sortedBySize = allProperties.sort((a, b) => b.size - a.size);
+        dispatch(getFilteredArray(sortedBySize));
+
         break;
 
       default:
-      // return allProperties.sort((a, b) => a.id - b.id);
+        console.log("default");
     }
   };
   const handleBedrooms = (e) => {
-    console.log(e.detail.selectedOption.dataset.id, "change!!!!!!");
-    // setValue({
-    //   ...value,
-    //   room: e.detail.selectedOption.dataset.id,
-    //   filter: [
-    //     ...allProperties.filter(
-    //       (item) => item.room == e.detail.selectedOption.dataset.id
-    //     ),
-    //   ],
-    // });
+    dispatch(
+      getFilteredProperties({
+        ...state,
+        room: e.detail.selectedOption.dataset.id,
+      })
+    );
+    dispatch(
+      getFilteredArray([
+        ...allProperties.filter(
+          (item) => item.room == e.detail.selectedOption.dataset.id
+        ),
+      ])
+    );
+  };
+
+  const handleBathrooms = (e) => {
+    dispatch(
+      getFilteredProperties({
+        ...state,
+        bath: e.detail.selectedOption.dataset.id,
+      })
+    );
+    dispatch(
+      getFilteredArray([
+        ...allProperties.filter(
+          (item) => item.bath == e.detail.selectedOption.dataset.id
+        ),
+      ])
+    );
+  };
+  const handleFilters = (e) => {
+    if (e.target.checked) {
+      dispatch(
+        getFilteredProperties({
+          ...state,
+          specialFeatures: {
+            ...state.specialFeatures,
+            [e.target.id]: true,
+          },
+        })
+      );
+      dispatch(
+        getFilteredArray([
+          ...properties,
+          ...allProperties.filter(
+            (item) => item[e.target.id] !== false && !properties.includes(item)
+          ),
+        ])
+      );
+    } else {
+      dispatch(
+        getFilteredProperties({
+          ...state,
+          specialFeatures: { ...state.specialFeatures, [e.target.id]: false },
+        })
+      );
+      dispatch(
+        getFilteredArray([
+          ...properties.filter(
+            (item) => item[e.target.id] === false && properties.includes(item)
+          ),
+        ])
+      );
+    }
   };
 
   return (
@@ -231,7 +264,7 @@ function Filters({
           <CheckBox
             text="Needs renovation"
             className="checkboxes"
-            value="reform"
+            value="renovation"
             onChange={handleCondition}
           />
         </div>
@@ -248,7 +281,7 @@ function Filters({
       </div>
       <div className="filter-box">
         <h6>Bathrooms:</h6>
-        <Select onChange={onChange}>
+        <Select onChange={handleBathrooms}>
           {selectedBathRooms.map((item) => (
             <Option key={item.id} data-id={item.id}>
               {item.text}
@@ -268,55 +301,27 @@ function Filters({
           step="50000"
         />
       </div>
-      <div className="filter-box">
+      {/* <div className="filter-box">
         <h6>Publication date:</h6>
         <DatePicker />
-      </div>
+      </div> */}
       <div className="filter-box">
         <h6>More Filters:</h6>
         <div className="checkbox">
-          <CheckBox
-            text="Pets allowed"
-            // onChange={(e) => setValue({ pet: e.target.checked })}
-            // value={value.pet}
-            // onChange={(e) => setValue({ pet: e.target.checked })}
-            // value={value.pet}
-          />
+          <CheckBox text="Pets allowed" id="pet" onChange={handleFilters} />
           <CheckBox
             text="Air conditioning"
-            // onChange={(e) => setValue({ air_conditioning: e.target.checked })}
-            // value={value.air_conditioning}
-            // onChange={(e) => setValue({ air_conditioning: e.target.checked })}
-            // value={value.air_conditioning}
+            id="air_conditioning"
+            onChange={handleFilters}
           />
-          <CheckBox
-            text="Lift"
-            // onChange={(e) => setValue({ lift: e.target.checked })}
-            // value={value.lift}
-            // onChange={(e) => setValue({ lift: e.target.checked })}
-            // value={value.lift}
-          />
-          <CheckBox
-            text="Garden"
-            // onChange={(e) => setValue({ garden: e.target.checked })}
-            // value={value.garden}
-            // onChange={(e) => setValue({ garden: e.target.checked })}
-            // value={value.garden}
-          />
+          <CheckBox text="Lift" id="lift" onChange={handleFilters} />
+          <CheckBox text="Garden" id="garden" onChange={handleFilters} />
           <CheckBox
             text="Swimming pool"
-            // onChange={(e) => setValue({ swimming_pool: e.target.checked })}
-            // value={value.swimming_pool}
-            // onChange={(e) => setValue({ swimming_pool: e.target.checked })}
-            // value={value.swimming_pool}
+            id="swimming_pool"
+            onChange={handleFilters}
           />
-          <CheckBox
-            text="Terrace"
-            // onChange={(e) => setValue({ terrace: e.target.checked })}
-            // value={value.terrace}
-            // onChange={(e) => setValue({ terrace: e.target.checked })}
-            // value={value.terrace}
-          />
+          <CheckBox text="Terrace" id="terrace" onChange={handleFilters} />
         </div>
       </div>
       {/* Result Side  */}
@@ -333,28 +338,15 @@ function Filters({
           />
         </div>
 
-        {/* <p>Showing all results matching {searchResultHere}</p> */}
-
         <div className="filter-box">
           <div className="col-sm-6">
             <Select className="filterBy" onChange={sortProperties}>
               <h6>Order by:</h6>
+              <Option id="sortByPrice">Price</Option>
               <Option id="sortBySize">Size</Option>
-              <Option id="sortByPice">Price</Option>
               <Option id="sortByRoom">Room</Option>
               <Option id="sortByBathroom">Bathroom</Option>
             </Select>
-          </div>
-        </div>
-
-        <div className="col-md-6 text-right">
-          <div className="btn-group">
-            <button type="button" className="btn btn-default active">
-              <i className="fa fa-list"></i>
-            </button>
-            <button type="button" className="btn btn-default">
-              <i className="fa fa-th"></i>
-            </button>
           </div>
         </div>
       </div>
