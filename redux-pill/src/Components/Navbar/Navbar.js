@@ -3,7 +3,13 @@ import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 
 import { Link, useLocation, useHistory } from "react-router-dom";
-import { Input, Icon } from "@ui5/webcomponents-react";
+import {
+  Input,
+  Icon,
+  SuggestionGroupItem,
+  SuggestionItem,
+} from "@ui5/webcomponents-react";
+import "@ui5/webcomponents/dist/features/InputSuggestions.js";
 
 import {
   getAllProperties,
@@ -65,7 +71,45 @@ function Navbar() {
               className="search-bar"
               placeholder="Search by city..."
               onChange={handelChange}
-            />
+              showSuggestions
+              style={{
+                width: "200px",
+                zIndex: "999",
+              }}
+            >
+              <SuggestionGroupItem text="Cities" />
+              <SuggestionItem
+                additionalText="Spain"
+                description="Cadiz"
+                icon="globe"
+                text="El Puerto de Santa María
+                "
+              />
+              <SuggestionItem
+                additionalText="Spain"
+                description="Barcelona"
+                icon="globe"
+                text="Premiá de Dalt"
+              />
+              <SuggestionItem
+                additionalText="Spain"
+                description="Granada"
+                icon="globe"
+                text="Salar"
+              />
+              <SuggestionItem
+                additionalText="USA"
+                description="Massachusetts "
+                icon="globe"
+                text="Lancaster"
+              />
+              <SuggestionItem
+                additionalText="USA"
+                description="Colorado"
+                icon="globe"
+                text="Laramie"
+              />
+            </Input>
           </form>
         )}
 
