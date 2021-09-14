@@ -1,11 +1,6 @@
 const INITIAL_STATE = {
   state: {
-    type: {
-      flatApartment: false,
-      house: false,
-      duplex: false,
-      penthouse: false,
-    },
+    type: "",
     condition: {
       new: false,
       good: false,

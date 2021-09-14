@@ -10,12 +10,21 @@ import {
   Icon,
 } from "@ui5/webcomponents-react";
 
-import { getFilteredProperties } from "../../redux/filter/action";
+import {
+  getFilteredProperties,
+  getFilteredArray,
+} from "../../redux/filter/action";
 
-function Filters({ allProperties, filterState, searched }) {
+function Filters({
+  allProperties,
+  filterState,
+  searched,
+  filters,
+  properties,
+}) {
   const dispatch = useDispatch();
   // const properties = useSelector((state) => state.search.allProperties);
-
+  console.log(filters, "FILTERS");
   console.log(allProperties, "ALL PROPERTIES");
   const state = filterState;
   console.log(state, "hello filters");
@@ -38,7 +47,7 @@ function Filters({ allProperties, filterState, searched }) {
   //   dispatch(getFilteredProperties(value));
   // }, [value]);
   useEffect(() => {
-    dispatch(getFilteredProperties(state, searched));
+    // dispatch(getFilteredProperties(state, searched));
   }, [state]);
 
   // console.log(value, "value");
@@ -67,29 +76,35 @@ function Filters({ allProperties, filterState, searched }) {
   const handleType = (e) => {
     console.log("type name => ", e.target.name);
     if (e.target.checked) {
-      // setValue({
-      //   ...value,
-      //   type: e.target.attributes.value.value,
-      //   filter: [
-      //     ...value.filter,
-      //     ...allProperties.filter(
-      //       (item) => item.type === e.target.attributes.value.value
-      //     ),
-      //   ],
-      // });
+      dispatch(
+        getFilteredProperties({
+          ...state,
+          type: e.target.attributes.value.value,
+        })
+      );
+      dispatch(
+        getFilteredArray([
+          ...properties,
+          ...allProperties.filter(
+            (item) => item.type === e.target.attributes.value.value
+          ),
+        ])
+      );
     } else {
-      // let newValue = {
-      //   ...value,
-      //   type: "",
-      //   filter: [
-      //     ...value.filter.filter(
-      //       (item) => item.type !== e.target.attributes.value.value
-      //     ),
-      //   ],
-      // };
-      // setValue(newValue);
+      dispatch(
+        getFilteredProperties({
+          ...state,
+          type: "",
+        })
+      );
+      dispatch(
+        getFilteredArray([
+          ...properties.filter(
+            (item) => item.type !== e.target.attributes.value.value
+          ),
+        ])
+      );
     }
-    // dispatch(getFilteredProperties(value));
   };
 
   const handleCondition = (e) => {
