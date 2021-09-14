@@ -17,13 +17,15 @@ function FilterPage() {
   const searched = useSelector((state) => state.search.properties);
   const filterState = useSelector((state) => state.filters.state);
   const properties = useSelector((state) => state.filters.properties);
-  console.log(properties, "hello filter page")
+  const filters = useSelector((state) => state.filters);
+  // console.log(properties, "hello filter page");
+  // console.log(searched, "searched");
   const dispatch = useDispatch();
   // buildParamsURL();
   // console.log(filter, "filter");
   useEffect(() => {
     dispatch(getAllProperties());
-  }, []);
+  }, [searched]);
 
   return (
     //Filter Side
@@ -38,6 +40,8 @@ function FilterPage() {
                     allProperties={allProperties}
                     filterState={filterState}
                     searched={searched}
+                    filters={filters}
+                    properties={properties}
                   />
                   <Table
                     className="tableContainer"
@@ -55,34 +59,14 @@ function FilterPage() {
                       ? properties.map((item) => {
                           return <TableEntry item={item} />;
                         })
+                      : searched.length !== 0
+                      ? searched.map((item) => {
+                          return <TableEntry item={item} />;
+                        })
                       : allProperties.map((item) => {
                           return <TableEntry item={item} />;
                         })}
                   </Table>
-
-                  <ul className="pagination">
-                    <li className="disabled">
-                      <a href="#">«</a>
-                    </li>
-                    <li className="active">
-                      <a href="#">1</a>
-                    </li>
-                    <li>
-                      <a href="#">2</a>
-                    </li>
-                    <li>
-                      <a href="#">3</a>
-                    </li>
-                    <li>
-                      <a href="#">4</a>
-                    </li>
-                    <li>
-                      <a href="#">5</a>
-                    </li>
-                    <li>
-                      <a href="#">»</a>
-                    </li>
-                  </ul>
                 </div>
               </div>
             </div>

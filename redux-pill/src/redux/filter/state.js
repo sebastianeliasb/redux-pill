@@ -16,7 +16,7 @@ const INITIAL_STATE = {
     size: 0,
     priceRange: {
       minPrice: 50000,
-      maxPrice: 500000,
+      maxPrice: 800000,
     },
     specialFeatures: {
       pet: false,
