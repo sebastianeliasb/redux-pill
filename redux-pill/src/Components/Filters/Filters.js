@@ -135,7 +135,33 @@ function Filters({
       // setValue(newValue);
     }
   };
+  const sortProperties = (e) => {
+    console.log(e.detail.selectedOption.id);
+    switch (e.detail.selectedOption.id) {
+      case "sortByPrice":
+        const sortedByPrice = allProperties.sort((a, b) => a.price - b.price);
+        console.log(sortedByPrice, "sortedByPrice");
+        dispatch(getFilteredArray([...properties, sortedByPrice]));
+        // setValue({ ...value, filter: sortedByPrice });
+        break;
+      case "sortByRoom":
+        const sortedByRoom = allProperties.sort((a, b) => a.room - b.room);
+        // setValue({ ...value, filter: sortedByRoom });
+        break;
+      case "sortByBathroom":
+        const sortedByBathroom = allProperties.sort((a, b) => a.bath - b.bath);
+        // setValue({ ...value, filter: sortedByBathroom });
+        break;
+      case "sortBySize":
+        const sortedBySize = allProperties.sort((a, b) => a.size - b.size);
+        // setValue({ ...value, filter: sortedBySize });
+        // console.log(value, "Size");
+        break;
 
+      default:
+      // return allProperties.sort((a, b) => a.id - b.id);
+    }
+  };
   const handleBedrooms = (e) => {
     console.log(e.detail.selectedOption.dataset.id, "change!!!!!!");
     // setValue({
@@ -311,12 +337,12 @@ function Filters({
 
         <div className="filter-box">
           <div className="col-sm-6">
-            <Select className="filterBy">
+            <Select className="filterBy" onChange={sortProperties}>
               <h6>Order by:</h6>
-              <option>Name</option>
-              <option>Date</option>
-              <option>View</option>
-              <option>Rating</option>
+              <Option id="sortBySize">Size</Option>
+              <Option id="sortByPice">Price</Option>
+              <Option id="sortByRoom">Room</Option>
+              <Option id="sortByBathroom">Bathroom</Option>
             </Select>
           </div>
         </div>
