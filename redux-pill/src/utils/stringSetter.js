@@ -14,9 +14,17 @@ function homeTypeParamsURL(types) {
   } else {
     for (let j = 0; j < typeURLArray.length; j++) {
       if (j === 0) {
-        typeURLString += "?type=" + typeURLArray[j];
+        if (typeURLArray[j] === "flatApartment") {
+          typeURLString += "?type=flat/apartment";
+        } else {
+          typeURLString += "?type=" + typeURLArray[j];
+        }
       } else {
-        typeURLString += "&type=" + typeURLArray[j];
+        if (typeURLArray[j] === "flatApartment") {
+          typeURLString += "&type=flat/apartment";
+        } else {
+          typeURLString += "&type=" + typeURLArray[j];
+        }
       }
     }
     // console.log("typeURLString", typeURLString);
@@ -172,7 +180,7 @@ function specialFeaturesParamsURL(currentParamsString, specialFeatures) {
   let specialFeaturesURLArray = [];
 
   for (const [key, value] of Object.entries(specialFeatures)) {
-    if (value !== false) {
+    if (value === true) {
       specialFeaturesURLArray.push([key, value]);
     }
   }

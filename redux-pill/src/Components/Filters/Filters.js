@@ -18,7 +18,10 @@ function Filters({ allProperties, filterState, searched }) {
 
   console.log(allProperties, "ALL PROPERTIES");
   const state = filterState;
-  console.log(state, "hello filters");
+
+  function handleTypeChange(e){
+
+  }
   // const [value, setValue] = useState({
   //   type: "",
   //   condition: "",
@@ -142,8 +145,8 @@ function Filters({ allProperties, filterState, searched }) {
           <CheckBox
             text="Flat/Apartment"
             className="checkboxes"
-            name="flat/apartment"
-            value="flat/apartment"
+            name="type.flatApartment"
+            value
             onChange={handleType}
           />
           <CheckBox
