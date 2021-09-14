@@ -79,7 +79,10 @@ function Filters({
       dispatch(
         getFilteredProperties({
           ...state,
-          type: e.target.attributes.value.value,
+          type: {
+            ...state.type,
+            [e.target.name]: e.target.attributes.value.value,
+          },
         })
       );
       dispatch(
@@ -157,24 +160,27 @@ function Filters({
           <CheckBox
             text="Flat/Apartment"
             className="checkboxes"
-            name="flat/apartment"
+            name="flatApartment"
             value="flat/apartment"
             onChange={handleType}
           />
           <CheckBox
             value="house"
+            name="house"
             text="House"
             className="checkboxes"
             onChange={handleType}
           />
           <CheckBox
             value="duplex"
+            name="duplex"
             text="Duplex"
             className="checkboxes"
             onChange={handleType}
           />
           <CheckBox
             value="penthouse"
+            name="penthouse"
             text="Penthouse"
             className="checkboxes"
             onChange={handleType}
