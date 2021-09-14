@@ -1,9 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import "./styles.css";
 
 import { useSelector, useDispatch } from "react-redux";
 import { getAllProperties } from "../../redux/search/action";
-import { buildParamsURL } from "../../utils/stringSetter";
 
 import withLayout from "../../hoc/withLayout";
 import TableHeader from "../../Components/TableHeader";
@@ -18,17 +17,13 @@ function FilterPage() {
   const filterState = useSelector((state) => state.filters.state);
   const properties = useSelector((state) => state.filters.properties);
   const filters = useSelector((state) => state.filters);
-  console.log(properties, "hello filter page");
-  console.log(searched, "searched");
   const dispatch = useDispatch();
-  // buildParamsURL();
-  // console.log(filter, "filter");
+
   useEffect(() => {
     dispatch(getAllProperties());
   }, [searched]);
 
   return (
-    //Filter Side
     <div className="container mt-3">
       <div className="row">
         <div className="col-md-13">
@@ -57,14 +52,14 @@ function FilterPage() {
                   >
                     {properties.length !== 0
                       ? properties.map((item) => {
-                          return <TableEntry item={item} />;
+                          return <TableEntry item={item} key={item.id} />;
                         })
                       : searched.length !== 0
                       ? searched.map((item) => {
-                          return <TableEntry item={item} />;
+                          return <TableEntry item={item} key={item.id} />;
                         })
                       : allProperties.map((item) => {
-                          return <TableEntry item={item} />;
+                          return <TableEntry item={item} key={item.id} />;
                         })}
                   </Table>
                 </div>

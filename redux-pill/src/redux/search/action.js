@@ -12,14 +12,6 @@ export const getAllProperties = () => {
   };
 };
 
-// export const getAllSearchedProperties = (searchedProperties) => {
-//   return async (dispatch) => {
-//     const data = await getSearchedProperties(searchedProperties);
-//     console.log(data);
-//     dispatch({ type: GET_SEARCHED_PROPERTIES, payload: data.data });
-//   };
-// };
-
 export const getSearchedPropertiesByCity = (searchedCity) => {
   return async (dispatch) => {
     const data = await getPropertiesByCity(searchedCity);

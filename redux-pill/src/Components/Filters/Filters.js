@@ -16,8 +16,6 @@ import {
 
 function Filters({ allProperties, filterState, filters, properties }) {
   const dispatch = useDispatch();
-  console.log(filters, "FILTERS");
-  console.log(allProperties, "ALL PROPERTIES");
   const state = filterState;
 
   useEffect(() => {
@@ -41,7 +39,6 @@ function Filters({ allProperties, filterState, filters, properties }) {
     { id: 4, text: "4 or + bathrooms" },
   ];
   const handleType = (e) => {
-    console.log("type name => ", e.target.name);
     if (e.target.checked) {
       dispatch(
         getFilteredProperties({
@@ -207,7 +204,32 @@ function Filters({ allProperties, filterState, filters, properties }) {
       );
     }
   };
-
+  const handlePriceRange = (e) => {
+    const priceRange = state.priceRange;
+    if (
+      e.target.startValue !== priceRange.minPrice ||
+      e.target.endValue !== priceRange.maxPrice
+    ) {
+      dispatch(
+        getFilteredProperties({
+          ...state,
+          priceRange: {
+            ...state.priceRange,
+            minPrice: e.target.startValue,
+            maxPrice: e.target.endValue,
+          },
+        })
+      );
+      dispatch(
+        getFilteredArray([
+          ...allProperties.filter(
+            (item) =>
+              item.price > e.target.startValue && item.price < e.target.endValue
+          ),
+        ])
+      );
+    }
+  };
   return (
     <>
       <h3 className="grid-title">
@@ -294,11 +316,12 @@ function Filters({ allProperties, filterState, filters, properties }) {
         <RangeSlider
           className="slider"
           min="50000"
-          max="500000"
+          max="800000"
           showTooltip="true"
           startValue="150000"
-          endValue="500000"
+          endValue="800000"
           step="50000"
+          onChange={handlePriceRange}
         />
       </div>
       {/* <div className="filter-box">

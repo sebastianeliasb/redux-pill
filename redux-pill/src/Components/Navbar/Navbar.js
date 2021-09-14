@@ -24,7 +24,6 @@ function Navbar() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("Handle Submit", text);
     dispatch(getSearchedPropertiesByCity(text));
     history.push({
       pathname: "/filter-page",
