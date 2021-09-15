@@ -2,7 +2,7 @@
   "users": [
     {
       "id": 1,
-      "email": "pau@assemblerschool.com",
+      "eemail": "pau@assemblerschool.com",
       "first_name": "Pau",
       "last_name": "Garcia",
       "password": "123456",
@@ -10,7 +10,7 @@
     },
     {
       "id": 2,
-      "email": "cdasilva@assemblerschool.com",
+      "eemail": "cdasilva@assemblerschool.com",
       "first_name": "Cristiam",
       "last_name": "Silva",
       "password": "654321",
@@ -18,7 +18,7 @@
     },
     {
       "id": 3,
-      "email": "new@assemblerschool.com",
+      "eemail": "new@assemblerschool.com",
       "first_name": "New",
       "last_name": "God",
       "password": "123321",
@@ -38,7 +38,7 @@
       "status": "available",
       "type": "flat/apartment",
       "description": "This is the description of the property",
-      "contact_mail": "pepito@assemblerschool.com",
+      "contact_email": "pepito@assemblerschool.com",
       "contact_phone": "+344767574657",
       "condition": "new",
       "room": 3,
@@ -51,7 +51,6 @@
       "air_conditioning": true,
       "swimming_pool": false,
       "terrace": true,
-      "publication_date": "2020/11/01 01:01:01"
     },
     {
       "id": 2,
@@ -65,7 +64,7 @@
       "status": "available",
       "type": "duplex",
       "description": "This is the description of the property",
-      "contact_mail": "pepito@assemblerschool.com",
+      "contact_email": "pepito@assemblerschool.com",
       "contact_phone": "+3499399221",
       "condition": "renovation",
       "room": 5,
@@ -78,7 +77,6 @@
       "air_conditioning": true,
       "swimming_pool": false,
       "terrace": true,
-      "publication_date": "2020/12/01 01:01:01"
     },
     {
       "id": 3,
@@ -92,7 +90,7 @@
       "status": "available",
       "type": "penthouse",
       "description": "This is the description of the property",
-      "contact_mail": "pepito2@assemblerschool.com",
+      "contact_email": "pepito2@assemblerschool.com",
       "contact_phone": "+382939892833",
       "condition": "new",
       "room": 4,
@@ -104,8 +102,7 @@
       "garden": false,
       "air_conditioning": false,
       "swimming_pool": false,
-      "terrace": true,
-      "publication_date": "2021/08/01 01:01:01"
+      "terrace": true
     },
     {
       "id": 4,
@@ -119,7 +116,7 @@
       "status": "available",
       "type": "house",
       "description": "This is the description of the property",
-      "contact_mail": "abx@lancaster.com",
+      "contact_email": "abx@lancaster.com",
       "contact_phone": "+1292338892",
       "condition": "good",
       "room": 6,
@@ -132,7 +129,6 @@
       "air_conditioning": true,
       "swimming_pool": true,
       "terrace": true,
-      "publication_date": "2020/01/17 01:01:01"
     },
     {
       "id": 5,
@@ -146,7 +142,7 @@
       "status": "available",
       "type": "house",
       "description": "This is the description of the property",
-      "contact_mail": "puertohouse@cadiz.com",
+      "contact_email": "puertohouse@cadiz.com",
       "contact_phone": "+335357574657",
       "condition": "good",
       "room": 6,
@@ -159,7 +155,6 @@
       "air_conditioning": true,
       "swimming_pool": true,
       "terrace": true,
-      "publication_date": "2018/01/17 01:01:01"
     }
   ],
   "favorite": [
