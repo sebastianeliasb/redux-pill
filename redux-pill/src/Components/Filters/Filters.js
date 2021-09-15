@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   Select,
@@ -7,6 +7,8 @@ import {
   RangeSlider,
   Input,
   Icon,
+  SuggestionGroupItem,
+  SuggestionItem,
 } from "@ui5/webcomponents-react";
 
 import {
@@ -14,7 +16,11 @@ import {
   getFilteredArray,
 } from "../../redux/filter/action";
 
+import { getSearchedPropertiesByCity } from "../../redux/search/action";
+
 function Filters({ allProperties, filterState, filters, properties }) {
+  const [text, setText] = useState("");
+
   const dispatch = useDispatch();
   const state = filterState;
 
@@ -230,6 +236,14 @@ function Filters({ allProperties, filterState, filters, properties }) {
       );
     }
   };
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    dispatch(getSearchedPropertiesByCity(text));
+  };
+
+  const handelChange = (e) => {
+    setText(e.target.value);
+  };
   return (
     <>
       <h3 className="grid-title">
@@ -354,11 +368,52 @@ function Filters({ allProperties, filterState, filters, properties }) {
         </h3>
         <hr></hr>
         <div className="input-group">
-          <Input
-            icon={<Icon name="search" />}
-            className="search-bar"
-            placeholder="Search by city..."
-          />
+          <form onSubmit={handleSubmit}>
+            <Input
+              icon={<Icon name="search" onClick={handleSubmit} />}
+              className="search-bar"
+              placeholder="Search by city..."
+              onChange={handelChange}
+              showSuggestions
+              style={{
+                width: "200px",
+                zIndex: "999",
+              }}
+            >
+              <SuggestionGroupItem text="Cities" />
+              <SuggestionItem
+                additionalText="Spain"
+                description="Cadiz"
+                icon="globe"
+                text="El Puerto de Santa María
+                "
+              />
+              <SuggestionItem
+                additionalText="Spain"
+                description="Barcelona"
+                icon="globe"
+                text="Premiá de Dalt"
+              />
+              <SuggestionItem
+                additionalText="Spain"
+                description="Granada"
+                icon="globe"
+                text="Salar"
+              />
+              <SuggestionItem
+                additionalText="USA"
+                description="Massachusetts "
+                icon="globe"
+                text="Lancaster"
+              />
+              <SuggestionItem
+                additionalText="USA"
+                description="Colorado"
+                icon="globe"
+                text="Laramie"
+              />
+            </Input>
+          </form>
         </div>
 
         <div className="filter-box">
