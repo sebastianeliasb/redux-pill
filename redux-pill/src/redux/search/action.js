@@ -8,13 +8,15 @@ import {
 export const getAllProperties = () => {
   return async (dispatch) => {
     const result = await getProperties();
-    dispatch({ type: GET_PROPERTIES, payload: result.data });
+    console.log(result);
+    dispatch({ type: GET_PROPERTIES, payload: result.data.data });
   };
 };
 
 export const getSearchedPropertiesByCity = (searchedCity) => {
   return async (dispatch) => {
     const data = await getPropertiesByCity(searchedCity);
-    dispatch({ type: GET_SEARCHED_PROPERTIES, payload: data.data });
+    console.log(data, "ACTION");
+    dispatch({ type: GET_SEARCHED_PROPERTIES, payload: data.data.data });
   };
 };

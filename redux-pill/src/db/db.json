@@ -50,7 +50,7 @@
       "garden": true,
       "air_conditioning": true,
       "swimming_pool": false,
-      "terrace": true,
+      "terrace": true
     },
     {
       "id": 2,
@@ -76,7 +76,7 @@
       "garden": false,
       "air_conditioning": true,
       "swimming_pool": false,
-      "terrace": true,
+      "terrace": true
     },
     {
       "id": 3,
@@ -128,7 +128,7 @@
       "garden": true,
       "air_conditioning": true,
       "swimming_pool": true,
-      "terrace": true,
+      "terrace": true
     },
     {
       "id": 5,
@@ -154,7 +154,7 @@
       "garden": true,
       "air_conditioning": true,
       "swimming_pool": true,
-      "terrace": true,
+      "terrace": true
     }
   ],
   "favorite": [
