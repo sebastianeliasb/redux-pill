@@ -9,18 +9,11 @@ const reducer = (
 ) => {
   switch (action.type) {
     case GET_FILTERS:
-      {
-        return { ...state, state: action.payload };
-      }
-      break;
+      return { ...state, state: action.payload };
     case GET_FILTERED_ARRAY:
-      {
-        return { ...properties, properties: action.payload };
-      }
-      break;
-    default: {
+      return { ...properties, properties: action.payload };
+    default:
       return state;
-    }
   }
 };
 

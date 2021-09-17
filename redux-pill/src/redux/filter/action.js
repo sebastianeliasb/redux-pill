@@ -7,7 +7,6 @@ export const getFilteredProperties = (searchedFilter) => {
 
   return async (dispatch) => {
     await getPropertiesByFilter(string);
-
     dispatch({ type: GET_FILTERS, payload: searchedFilter });
   };
 };

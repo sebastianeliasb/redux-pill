@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import React, { useState } from "react";
+import { useDispatch } from "react-redux";
 import {
   Select,
   Option,
@@ -10,7 +10,7 @@ import {
   SuggestionGroupItem,
   SuggestionItem,
 } from "@ui5/webcomponents-react";
-
+import "@ui5/webcomponents/dist/features/InputElementsFormSupport.js";
 import {
   getFilteredProperties,
   getFilteredArray,
@@ -23,10 +23,6 @@ function Filters({ allProperties, filterState, filters, properties }) {
 
   const dispatch = useDispatch();
   const state = filterState;
-
-  useEffect(() => {
-    // dispatch(getFilteredProperties(state, searched));
-  }, [state]);
 
   const selectedBedRooms = [
     { id: 0, text: "0" },
@@ -124,8 +120,6 @@ function Filters({ allProperties, filterState, filters, properties }) {
         const sortedByPrice = allProperties.sort((a, b) => b.price - a.price);
         dispatch(getFilteredArray(sortedByPrice));
         break;
-      // setValue({ ...value, filter: sortedByPrice });
-
       case "sortByRoom":
         const sortedByRoom = allProperties.sort((a, b) => b.room - a.room);
         dispatch(getFilteredArray(sortedByRoom));
@@ -137,7 +131,6 @@ function Filters({ allProperties, filterState, filters, properties }) {
       case "sortBySize":
         const sortedBySize = allProperties.sort((a, b) => b.size - a.size);
         dispatch(getFilteredArray(sortedBySize));
-
         break;
 
       default:

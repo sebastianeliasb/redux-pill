@@ -5,18 +5,13 @@ import INITIAL_STATE from "./state";
 const reducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
     case GET_PROPERTIES:
-      {
-        return { ...state, allProperties: action.payload };
-      }
-      break;
+      return { ...state, allProperties: action.payload };
+
     case GET_SEARCHED_PROPERTIES:
-      {
-        return { ...state, properties: action.payload };
-      }
-      break;
-    default: {
+      return { ...state, properties: action.payload };
+
+    default:
       return state;
-    }
   }
 };
 

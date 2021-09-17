@@ -7,7 +7,7 @@ import App from "./App";
 import store from "./redux/store";
 import Provider from "./redux/provider";
 import * as serviceWorker from "./serviceWorker";
-
+import "@ui5/webcomponents-icons/dist/AllIcons.js";
 ReactDOM.render(
   <Provider store={store}>
     <App />

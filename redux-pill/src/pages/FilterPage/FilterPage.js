@@ -21,7 +21,7 @@ function FilterPage() {
 
   useEffect(() => {
     dispatch(getAllProperties());
-  }, [searched]);
+  }, [dispatch]);
 
   return (
     <div className="container mt-3">

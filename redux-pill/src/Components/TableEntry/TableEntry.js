@@ -6,7 +6,7 @@ function TableEntry({ item }) {
     <>
       <TableRow>
         <TableCell>
-          <img src={item.imageURL} />
+          <img src={item.imageURL} alt={item.title} />
         </TableCell>
         <TableCell>
           <Label className="address">

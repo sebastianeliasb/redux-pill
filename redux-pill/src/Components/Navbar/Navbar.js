@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 
 import { Link, useLocation, useHistory } from "react-router-dom";
 import {
@@ -11,17 +11,13 @@ import {
 } from "@ui5/webcomponents-react";
 import "@ui5/webcomponents/dist/features/InputSuggestions.js";
 
-import {
-  getAllProperties,
-  getSearchedPropertiesByCity,
-} from "../../redux/search/action";
+import { getSearchedPropertiesByCity } from "../../redux/search/action";
 import "./Navbar.css";
 
 function Navbar() {
   const [click, setClick] = useState(false);
   const [button, setButton] = useState(true);
   const [text, setText] = useState("");
-  // const searched = useSelector((state) => state.search);
   const dispatch = useDispatch();
 
   const url = useLocation();
